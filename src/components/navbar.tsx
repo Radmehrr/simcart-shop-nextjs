@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ThemeChanger from "./themeChanger";
 
 export function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -29,6 +30,10 @@ export function Navbar() {
           <a href="#" className="hover:text-purple-800">
             ارتباط با ما
           </a>
+
+          <div>
+            <ThemeChanger />
+          </div>
         </div>
 
         <div className="flex">
@@ -49,7 +54,7 @@ export function Navbar() {
           id="menu-btn"
           type="button"
           className={`${
-            openMenu && "open"
+            !openMenu && "open"
           } block hamburger md:hidden focus:outline-none cursor-pointer `}
           onClick={() => setOpenMenu(!openMenu)}
         >
@@ -62,9 +67,9 @@ export function Navbar() {
       <div className="md:hidden">
         <div
           id="menu"
-          className={`absolute flex flex-col items-center
+          className={`absolute flex flex-col items-center dark:text-black
           self-end py-8 mt-10 space-y-6 font-bold top-[-400px]
-          transition-all ease-in duration-500
+          transition-all ease-in duration-500 
         bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md ${
           !openMenu && "top-[40px]"
         }`}
@@ -84,6 +89,9 @@ export function Navbar() {
           <a href="#" className="hover:text-purple-800">
             ارتباط با ما
           </a>
+          <div>
+            <ThemeChanger />
+          </div>
         </div>
       </div>
     </nav>
