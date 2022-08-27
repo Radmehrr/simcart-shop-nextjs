@@ -3,30 +3,31 @@ import { useState } from "react";
 export function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
 
-  console.log(openMenu);
   return (
-    <nav className="relative container mx-auto p-6">
+    <nav className="relative mx-auto p-6 rtl">
       <div className="flex items-center justify-between">
         {/* logo */}
         <div className="pt-2">
           <img />
         </div>
 
-        <div className="hidden md:flex space-x-6">
-          <a href="#" className="hover:text-darkBlue">
-            Pricing
+        <div className="hidden md:flex space-x-8 sahel">
+          <a href="#" className="hover:text-purple-800 md:ml-4 md:mr-[-550px]">
+            صفحه اصلی
           </a>
-          <a href="#" className="hover:text-darkBlue">
-            Products
+
+          <a href="#" className="hover:text-purple-800">
+            خدمات
           </a>
-          <a href="#" className="hover:text-darkBlue">
-            About Us
+          <a href="#" className="hover:text-purple-800">
+            بلاگ
           </a>
-          <a href="#" className="hover:text-darkBlue">
-            Careers
+
+          <a href="#" className="hover:text-purple-800">
+            درباره ما
           </a>
-          <a href="#" className="hover:text-darkBlue">
-            Community
+          <a href="#" className="hover:text-purple-800">
+            ارتباط با ما
           </a>
         </div>
 
@@ -49,7 +50,7 @@ export function Navbar() {
           type="button"
           className={`${
             openMenu && "open"
-          } block hamburger md:hidden focus:outline-none cursor-pointer`}
+          } block hamburger md:hidden focus:outline-none cursor-pointer `}
           onClick={() => setOpenMenu(!openMenu)}
         >
           <span className="hamburger-top"></span>
@@ -68,20 +69,20 @@ export function Navbar() {
           !openMenu && "top-[40px]"
         }`}
         >
-          <a href="#" className="hover:text-darkBlue">
-            Pricing
+          <a href="#" className="hover:text-purple-800">
+            صفحه اصلی
           </a>
-          <a href="#" className="hover:text-darkBlue">
-            Products
+          <a href="#" className="hover:text-purple-800">
+            خدمات
           </a>
-          <a href="#" className="hover:text-darkBlue">
-            About Us
+          <a href="#" className="hover:text-purple-800">
+            بلاگ
           </a>
-          <a href="#" className="hover:text-darkBlue">
-            Careers
+          <a href="#" className="hover:text-purple-800">
+            درباره ما
           </a>
-          <a href="#" className="hover:text-darkBlue">
-            Community
+          <a href="#" className="hover:text-purple-800">
+            ارتباط با ما
           </a>
         </div>
       </div>
