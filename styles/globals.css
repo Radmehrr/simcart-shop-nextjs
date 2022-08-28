@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: "sahel";
-  src: url("../src/font/Sahel.ttf");
+  src: url("/font/Sahel.ttf");
 }
 
 .rtl {

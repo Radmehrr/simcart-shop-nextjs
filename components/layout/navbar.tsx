@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ThemeChanger from "./themeChanger";
+import ThemeChanger from "../themeChanger";
 
 export function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
