@@ -3,7 +3,7 @@ import { Navbar } from "./navbar";
 
 const Layout = ({ children }: any) => {
   return (
-    <div>
+    <div className="bg-gradient-to-tr from-purple-200 via-purple-400 to-purple-800 dark:bg-gradient-to-bl dark:from-gray-700 dark:via-gray-900 dark:to-black h-96">
       <section>
         <Navbar />
       </section>
