@@ -10,16 +10,11 @@
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: "sahel";
-  src: url("/font/Sahel.ttf");
-}
-
 .rtl {
   direction: rtl;
 }
-.sahel {
-  font-family: sahel;
+.bakhMedium {
+  font-family: bakhMedium;
 }
 .hamburger {
   cursor: pointer;

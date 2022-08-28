@@ -1,0 +1,24 @@
+@font-face {
+  font-family: BakhRegular;
+  src: url(/fonts/bakh-regular.woff) format("woff"),
+    url(/fonts/bakh-regular.ttf) format("truetype"),
+    url(/fonts/bakh-regular.eot) format("embedded-opentype");
+}
+@font-face {
+  font-family: BakhMedium;
+  src: url(/fonts/bakh-medium.woff) format("woff"),
+    url(/fonts/bakh-medium.ttf) format("truetype"),
+    url(/fonts/bakh-medium.eot) format("embedded-opentype");
+}
+@font-face {
+  font-family: BakhBold;
+  src: url(/fonts/bakh-bold.woff) format("woff"),
+    url(/fonts/bakh-bold.ttf) format("truetype"),
+    url(/fonts/bakh-bold.eot) format("embedded-opentype");
+}
+@font-face {
+  font-family: BakhHeavy;
+  src: url(/fonts/bakh-heavy.woff) format("woff"),
+    url(/fonts/bakh-heavy.ttf) format("truetype"),
+    url(/fonts/bakh-heavy.eot) format("embedded-opentype");
+}

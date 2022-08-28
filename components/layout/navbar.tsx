@@ -12,7 +12,7 @@ export function Navbar() {
           <img />
         </div>
 
-        <div className="hidden md:flex space-x-8 sahel">
+        <div className="hidden md:flex space-x-8 bakhMedium">
           <a href="#" className="hover:text-purple-800 md:ml-4 md:mr-[-550px]">
             صفحه اصلی
           </a>
