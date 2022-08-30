@@ -69,12 +69,12 @@ body {
   font-size: 12px;
 }
 .otpContainer {
-  width: "100%";
+  width: 100%;
   direction: ltr;
   justify-content: center;
 }
 .otpContainer div {
-  flex-basis: 15%;
+  flex-basis: 16%;
   display: flex;
   align-items: center;
   justify-content: center;
