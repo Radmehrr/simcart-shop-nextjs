@@ -5,15 +5,10 @@ export function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <nav className="relative mx-auto p-6 rtl">
+    <nav className="relative mx-auto p-6">
       <div className="flex items-center justify-between">
-        {/* logo */}
-        <div className="pt-2">
-          <img />
-        </div>
-
         <div className="hidden md:flex space-x-8 bakhMedium">
-          <a href="#" className="hover:text-purple-800 md:ml-4 md:mr-[-550px]">
+          <a href="#" className="hover:text-purple-800 md:ml-4">
             صفحه اصلی
           </a>
 
@@ -50,6 +45,12 @@ export function Navbar() {
             ورود
           </a>
         </div>
+
+        {/* logo */}
+        {/* <div className="pt-2">
+          <img />
+        </div> */}
+
         <button
           id="menu-btn"
           type="button"

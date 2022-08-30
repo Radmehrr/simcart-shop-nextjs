@@ -10,9 +10,11 @@
   box-sizing: border-box;
 }
 
-.rtl {
+html,
+body {
   direction: rtl;
 }
+
 .bakhMedium {
   font-family: bakhMedium;
 }
