@@ -62,3 +62,27 @@ body {
 .open .hamburger-bottom {
   transform: rotate(-45deg) translateY(6px) translate(-6px);
 }
+.error {
+  margin-top: 10px;
+  color: red;
+  font-family: bakhMedium;
+  font-size: 12px;
+}
+.otpContainer {
+  width: "100%";
+  direction: ltr;
+  justify-content: center;
+}
+.otpContainer div {
+  flex-basis: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.otpContainer input {
+  min-width: 40px;
+  width: 100% !important;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+}
