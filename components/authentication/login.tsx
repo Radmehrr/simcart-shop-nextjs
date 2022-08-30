@@ -6,6 +6,7 @@ import * as yup from "yup";
 import instance from "../../axios-config";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+
 const Login = () => {
   const router = useRouter();
   const schema = yup.object().shape({
@@ -15,7 +16,9 @@ const Login = () => {
   const { register, handleSubmit, formState }: any = useForm({
     resolver: yupResolver(schema),
   });
+
   const { errors } = formState;
+
   const onSubmit = (data: any) => {
     console.log(data);
     instance
@@ -33,23 +36,23 @@ const Login = () => {
   };
   return (
     <div className="bakhMedium">
-      <main className="bg-white max-w-lg mx-auto p-8 md:p-12 mt-2 rounded-lg shadow-2xl">
-        <section className="text-center">
+      <main className="bg-white max-w-lg mx-auto p-8 md:p-12 rounded-lg shadow-2xl">
+        <section className="text-center md:-mt-6">
           <Image
             src="/img/logos/SimcartBazarOnlyElementLogo.png"
             width={40}
             height={45}
           />
-          <p className="text-primary font-extrabold pt-2">
+          <p className="text-primary font-extrabold pt-2 selection:bg-purple-500 selection:text-white">
             ورود به حساب کاربری
           </p>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-5">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
             <div className="mt-3 pt-3 rounded bg-gray-200">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2 mr-3 "
+                className="block text-gray-700 text-sm font-bold mb-2 mr-3 selection:bg-purple-500 selection:text-white"
                 htmlFor="phone"
               >
                 شماره تلفن
@@ -64,7 +67,8 @@ const Login = () => {
             <div className="error">{errors.phone?.message}</div>
             <div className="mt-3 pt-3 rounded bg-gray-200">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2 mr-3"
+                className="block text-gray-700 text-sm font-bold mb-2 mr-3
+                selection:bg-purple-500 selection:text-white"
                 htmlFor="password"
               >
                 رمز ورود
@@ -86,7 +90,7 @@ const Login = () => {
               </a>
             </div>
             <button
-              className="bg-primary hover:bg-primaryDark text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+              className="bg-gradient-to-l from-purple-600 via-purple-400 to-purple-300 hover:bg-primaryDark text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
               type="submit"
             >
               تایید و ورود

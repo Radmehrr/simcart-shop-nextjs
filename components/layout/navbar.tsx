@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import instance from "../../axios-config";
 
 export function Navbar() {
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [data, setData] = useState<any>(null);
   const router = useRouter();
   useEffect(() => {
@@ -22,7 +22,6 @@ export function Navbar() {
     { title: "ارتباط با ما", link: "/" },
   ];
 
-  console.log(router.pathname);
   return (
     <nav className="relative mx-auto px-6 py-3">
       <div className="flex items-center justify-between">
@@ -46,7 +45,9 @@ export function Navbar() {
           {navbarItems.map((item: any) => {
             return (
               <Link key={item.title} href={item.link}>
-                <a className="hover:text-primaryDark md:ml-4">{item.title}</a>
+                <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                  {item.title}
+                </a>
               </Link>
             );
           })}
@@ -63,7 +64,11 @@ export function Navbar() {
               router.pathname !== "/signUp" &&
               router.pathname !== "/verify" && (
                 <Link href="/login">
-                  <a className="hidden p-2 px-6  text-white bg-primary rounded-lg baseline hover:bg-primaryLight md:block">
+                  <a
+                    className="hidden p-2 px-6 text-white bg-primary rounded-lg baseline md:block
+                     hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600 
+                  "
+                  >
                     ورود
                   </a>
                 </Link>
