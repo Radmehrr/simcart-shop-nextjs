@@ -24,7 +24,10 @@ const SignUp = () => {
       .then((res: any) => {
         console.log(res);
         Cookies.set("phoneNumber", res.data.phone);
-        router.push("/verify");
+        const phoneNumber = Cookies.get("phoneNumber");
+        if (phoneNumber) {
+          router.push("/verify");
+        }
       })
       .catch((err: any) => {
         console.log(err);

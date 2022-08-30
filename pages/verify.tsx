@@ -1,8 +1,10 @@
+import Cookies from "js-cookie";
 import type { GetServerSideProps, NextPage } from "next";
 import Verify from "../components/authentication/verify";
 import Layout from "../components/layout/layout";
 
-const VerifyPage: NextPage = ({phoneNumber}:any) => {
+const VerifyPage: NextPage = () => {
+  const phoneNumber = Cookies.get("phoneNumber")
   console.log(phoneNumber)
   return (
     <Layout>
@@ -11,23 +13,5 @@ const VerifyPage: NextPage = ({phoneNumber}:any) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const phoneNumber = context.req.cookies["phoneNumber"];
-
-  if (!phoneNumber) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  } else {
-    return {
-      props: {
-        phoneNumber,
-      },
-    };
-  }
-};
 
 export default VerifyPage;
