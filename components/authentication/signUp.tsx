@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import instance from "../../axios-config";
+
 const SignUp = () => {
   const router = useRouter();
   const schema = yup.object().shape({
@@ -13,12 +14,13 @@ const SignUp = () => {
     phone: yup.string().required("وارد کردن شماره تلفن الزامی می باشد"),
     password: yup.string().required("وارد کردن رمز ورود الزامی می باشد"),
   });
+
   const { register, handleSubmit, formState }: any = useForm({
     resolver: yupResolver(schema),
   });
+
   const { errors } = formState;
   const onSubmit = (data: any) => {
-    console.log(data);
     instance
       .post("/user/auth/signUp", data)
       .then((res: any) => {
@@ -36,22 +38,22 @@ const SignUp = () => {
   return (
     <div className="bakhMedium">
       <main className="bg-white max-w-lg mx-auto p-8 md:p-12 mt-2 rounded-lg shadow-2xl">
-        <section className="text-center">
+        <section className="text-center md:-mt-6">
           <Image
             src="/img/logos/SimcartBazarOnlyElementLogo.png"
             width={40}
             height={45}
           />
-          <p className="text-primary font-extrabold pt-2">
+          <p className="text-primary font-extrabold selection:bg-purple-500 selection:text-white">
             ثبت نام در سیم کارت بازار
           </p>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-5">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
             <div className=" pt-3 rounded bg-gray-200">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2 mr-3 "
+                className="block text-gray-700 text-sm font-bold mb-2 mr-3 selection:bg-purple-500 selection:text-white"
                 htmlFor="fullName"
               >
                 نام و نام خانوادگی
@@ -66,7 +68,7 @@ const SignUp = () => {
             <div className="error">{errors.fullName?.message}</div>
             <div className="mt-3 pt-3 rounded bg-gray-200">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2 mr-3 "
+                className="block text-gray-700 text-sm font-bold mb-2 mr-3 selection:bg-purple-500 selection:text-white"
                 htmlFor="phone"
               >
                 شماره تلفن
@@ -81,7 +83,7 @@ const SignUp = () => {
             <div className="error">{errors.phone?.message}</div>
             <div className="mt-3 pt-3 rounded bg-gray-200">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2 mr-3"
+                className="block text-gray-700 text-sm font-bold mb-2 mr-3 selection:bg-purple-500 selection:text-white"
                 htmlFor="password"
               >
                 رمز ورود

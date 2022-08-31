@@ -90,7 +90,7 @@ const Login = () => {
               </a>
             </div>
             <button
-              className="bg-gradient-to-l from-purple-600 via-purple-400 to-purple-300 hover:bg-primaryDark text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+              className="bg-primary hover:bg-primaryDark text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
               type="submit"
             >
               تایید و ورود
