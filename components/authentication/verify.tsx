@@ -7,10 +7,12 @@ import { useState } from "react";
 const Verify = ({ phoneNumber }: any) => {
   const router = useRouter();
   const [otpValue, setOtpValue] = useState("");
+
   const handleChange = (otp: any) => {
     console.log(otp);
     setOtpValue(otp);
   };
+
   const submitHandler = (e: any) => {
     e.preventDefault();
     instance
@@ -39,11 +41,11 @@ const Verify = ({ phoneNumber }: any) => {
             width={40}
             height={45}
           />
-          <p className="text-transparent font-extrabold pt-2 bg-clip-text bg-gradient-to-l from-purple-800 to-red-700">
+          <p className="text-transparent font-extrabold pt-2 bg-clip-text bg-gradient-to-l from-purple-800 to-red-700 selection:bg-purple-500 selection:text-white">
             اعتبار سنجی شماره تلفن
           </p>
         </section>
-        <div className="text-black">
+        <div className="text-black selection:bg-purple-500 selection:text-white">
           لطفا کد ارسال شده به شماره {phoneNumber} را جهت اعتبار سنجی وارد کنید.
         </div>
         <section className="mt-10">
@@ -66,7 +68,7 @@ const Verify = ({ phoneNumber }: any) => {
                 otpValue.length === 6
                   ? "bg-primary hover:bg-primaryDark"
                   : "bg-gray-400"
-              } mt-6 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200`}
+              } mt-6 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 disabled:cursor-not-allowed`}
               disabled={otpValue.length !== 6}
             >
               نهایی کردن ثبت نام
