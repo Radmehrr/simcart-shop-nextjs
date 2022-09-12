@@ -68,8 +68,7 @@ export function Navbar() {
                     className="hidden p-2 px-6 text-white bg-primary rounded-lg baseline md:block
                     shadow-lg
                   dark:hover:text-white dark:hover:border-purple-400
-                    hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600 
-                    hover:-rotate-3"
+                    hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"
                   >
                     ورود
                   </a>
@@ -102,9 +101,9 @@ export function Navbar() {
           !openMenu && "top-[40px]"
         }`}
         >
-          {navbarItems.map((item: any) => {
+          {navbarItems.map((item: any, index) => {
             return (
-              <Link key={item.title} href={item.link}>
+              <Link key={index} href={item.link}>
                 <a className="hover:text-primaryDark md:ml-4">{item.title}</a>
               </Link>
             );

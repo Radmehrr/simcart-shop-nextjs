@@ -19,11 +19,9 @@ const Footer = () => {
             <li className="text-purple-900 font-bold mb-2 pt-2">
               سیمکارت بازار
             </li>
-            {navbarItems.map((item) => (
-              <li className="mt-1 text-purple-700">
-                <Link key={item.title} href={item.link}>
-                  {item.title}
-                </Link>
+            {navbarItems.map((item, index) => (
+              <li key={index} className="mt-1 text-purple-700">
+                <Link href={item.link}>{item.title}</Link>
               </li>
             ))}
           </ul>
