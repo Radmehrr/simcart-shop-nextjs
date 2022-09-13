@@ -12,6 +12,7 @@ const FilterSimcart: FC<any> = ({
   setFromPrice,
   setToPrice,
   setLimit,
+  searchButton,
 }) => {
   return (
     <section>
@@ -31,7 +32,7 @@ const FilterSimcart: FC<any> = ({
             dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => setOperator(e.target.value)}
             >
-              <option>فرقی نمیکند</option>
+              <option value="">فرقی نمیکند</option>
               {Operators.map((operator) => (
                 <option key={operator.name} value={operator.title}>
                   {operator.title}
@@ -54,7 +55,7 @@ const FilterSimcart: FC<any> = ({
             dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => setSimType(e.target.value)}
             >
-              <option>فرقی نمیکند</option>
+              <option value="">فرقی نمیکند</option>
               {SimType.map((type) => (
                 <option key={type.name} value={type.title}>
                   {type.title}
@@ -80,7 +81,7 @@ const FilterSimcart: FC<any> = ({
             dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => setStatus(e.target.value)}
             >
-              <option>فرقی نمیکند</option>
+              <option value="">فرقی نمیکند</option>
               {SimStatus.map((status) => (
                 <option key={status.name} value={status.title}>
                   {status.title}
@@ -106,7 +107,7 @@ const FilterSimcart: FC<any> = ({
                       dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => setRondType(e.target.value)}
             >
-              <option>فرقی نمیکند</option>
+              <option value="">فرقی نمیکند</option>
               {RondType.map((type) => (
                 <option key={type.name} value={type.title}>
                   {type.title}
@@ -125,7 +126,7 @@ const FilterSimcart: FC<any> = ({
               id="from"
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 
-                focus:ring-blue-500 focus:border-blue-500 -mr-2 w-[200px] md:w-[170px] h-10"
+                focus:ring-blue-500 focus:border-blue-500 -mr-2 w-[200px] md:w-[170px] h-10  dark:bg-gray-700 dark:text-white"
               onChange={(e) => setFromPrice(e.target.value)}
             />
             <label className="mr-2 mt-1 md:mt-2">تومان</label>
@@ -139,7 +140,7 @@ const FilterSimcart: FC<any> = ({
               id="from"
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2
-                focus:ring-blue-500 focus:border-blue-500 w-[200px] md:w-[178px] -mr-1 h-10"
+                focus:ring-blue-500 focus:border-blue-500 w-[200px] md:w-[178px] -mr-1 h-10 dark:bg-gray-700 dark:text-white"
               onChange={(e) => setToPrice(e.target.value)}
             />
             <label className="mr-2 mt-1 md:mt-2">تومان</label>
@@ -156,16 +157,20 @@ const FilterSimcart: FC<any> = ({
            dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-900"
               onChange={(e) => setLimit(e.target.value)}
             >
+              <option value="">انتخاب کنید</option>
               <option value="5">5</option>
               <option value="10">10</option>
-
               <option value="20">20</option>
               <option value="50">50</option>
+              <option value="50">100</option>
             </select>
           </div>
 
           <div className="flex mb-2 mr-2 md:mr-16 md:mt-2 md:w-1/4 w-[200px] justify-center">
-            <button className="bg-purple-700 rounded-lg w-full md:w-[180px] md:mr-5 dark:bg-gray-700 h-10 hover:bg-white hover:text-purple-700 hover:border-2 hover:border-purple-700">
+            <button
+              className="bg-purple-700 rounded-lg w-full md:w-[180px] md:mr-5 dark:bg-gray-700 h-10 hover:bg-white dark:hover:bg-white hover:text-purple-700 hover:border-2 hover:border-purple-700"
+              onClick={searchButton}
+            >
               جستجو
             </button>
           </div>
