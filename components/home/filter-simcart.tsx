@@ -157,12 +157,12 @@ const FilterSimcart: FC<any> = ({
            dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-900"
               onChange={(e) => setLimit(e.target.value)}
             >
-              <option value="">انتخاب کنید</option>
+              <option value="10">انتخاب کنید</option>
               <option value="5">5</option>
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="50">50</option>
-              <option value="50">100</option>
+              <option value="100">100</option>
             </select>
           </div>
 

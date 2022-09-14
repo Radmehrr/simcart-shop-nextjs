@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import instance from "../../axios-config";
 
 export function Navbar() {
-  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(true);
   const [data, setData] = useState<any>(null);
   const router = useRouter();
   useEffect(() => {

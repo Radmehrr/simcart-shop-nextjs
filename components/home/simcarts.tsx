@@ -1,7 +1,12 @@
 import { FC } from "react";
 import numeral from "numeral";
+import Loading from "../loading";
 
-const Simcarts: FC<any> = ({ simcarts }) => {
+const Simcarts: FC<any> = ({ simcarts, loading }) => {
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <section>
       <div className="w-full">
