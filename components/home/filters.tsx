@@ -128,7 +128,7 @@ const Filters: FC<any> = ({
               id="from"
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 
-                focus:ring-blue-500 focus:border-blue-500 w-full mx-2
+                focus:ring-blue-500 focus:border-blue-500 w-full mx-2 md:h-10
                  dark:bg-gray-700 dark:text-white text-center"
               placeholder="به تومان"
               onChange={(e) => setFromPrice(e.target.value)}
@@ -146,7 +146,7 @@ const Filters: FC<any> = ({
               type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 
                 focus:ring-blue-500 focus:border-blue-500
-                ml-2 mr-10 w-full
+                ml-2 mr-10 w-full md:h-10
                  dark:bg-gray-700 dark:text-white text-center"
               placeholder="به تومان"
               onChange={(e) => setToPrice(e.target.value)}
