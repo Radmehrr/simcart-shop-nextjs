@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import instance from "../../axios-config";
-import FilterSimcart from "./filter-simcart";
+import Filters from "./filters";
 import Pagination from "./pagination";
 import Simcarts from "./simcarts";
 
@@ -70,7 +70,7 @@ const HomeSimcart = () => {
   return (
     <section>
       <div>
-        <FilterSimcart
+        <Filters
           setOperator={setOperator}
           setSimType={setSimType}
           setStatus={setStatus}
