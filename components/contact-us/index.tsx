@@ -22,7 +22,15 @@ const Contact = () => {
         text: description,
         section: sec,
       });
-      console.log("1", res);
+
+      toast.success("تیکت با موفقیت ثبت شد.", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setDescription("");
+      setTitle("");
+      setSection("");
+      setFile("");
+
       if (file) {
         const formData = new FormData();
         formData.append("file", file);
@@ -34,14 +42,6 @@ const Contact = () => {
           }
         );
       }
-
-      toast.success("تیکت با موفقیت ثبت شد.", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      setDescription("");
-      setTitle("");
-      setSection("");
-      setFile("");
     } catch (e) {
       toast.error("خطا در داده های ارسالی", {
         position: toast.POSITION.TOP_RIGHT,
