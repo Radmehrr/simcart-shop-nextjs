@@ -5,12 +5,11 @@ const instance = axios.create({
   baseURL: "https://simcart.iran.liara.run",
 });
 
-instance.interceptors.request.use((config) => {
+instance.interceptors.request.use((config: any) => {
   const token = Cookies.get("accessToken");
+
   if (token && typeof token == "string") {
-    if (config.headers) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });

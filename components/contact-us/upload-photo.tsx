@@ -1,6 +1,10 @@
+import { FC } from "react";
 import Upload from "../svg/upload";
 
-const UploadPhoto = () => {
+const UploadPhoto: FC<any> = ({ setFile }) => {
+  const onChange = (e: any) => {
+    setFile(e.target.files[0]);
+  };
   return (
     <section>
       <div className="flex justify-center items-center w-full">
@@ -16,7 +20,12 @@ const UploadPhoto = () => {
               </span>
             </p>
           </div>
-          <input id="uploadfile" type="file" className="hidden" />
+          <input
+            id="uploadfile"
+            type="file"
+            className="hidden"
+            onChange={onChange}
+          />
         </label>
       </div>
     </section>
