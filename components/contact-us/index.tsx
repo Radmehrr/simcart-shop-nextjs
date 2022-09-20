@@ -122,13 +122,15 @@ const Contact = () => {
           <div className="w-full flex mt-5">
             <button
               onClick={(e) => sendTicket(e)}
-              className="flex justify-center w-1/2 h-15 mx-2 bg-green-600 text-white font-bold py-3 rounded-lg"
+              className="flex justify-center w-1/2 h-15 mx-2 bg-green-500 text-white font-bold
+              py-3 rounded-lg hover:bg-green-600"
             >
               <Check /> <p className="mx-1 mt-1">ارسال تیکت</p>
             </button>
             <button
               onClick={(e) => remove(e)}
-              className="flex justify-center w-1/2 h-15 mx-2 bg-red-600 text-white font-bold py-3 rounded-lg"
+              className="flex justify-center w-1/2 h-15 mx-2 bg-red-500 text-white font-bold
+              py-3 rounded-lg hover:bg-red-600"
             >
               <Trash /> <p className="mx-1 mt-1">پاک کردن</p>
             </button>

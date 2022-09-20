@@ -54,7 +54,10 @@ const Simcarts: FC<any> = ({ simcarts, loading }) => {
             </thead>
             <tbody>
               {simcarts.map((sim: any, idx: number) => (
-                <tr className="bg-white dark:bg-gray-700 text-center border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                <tr
+                  key={idx}
+                  className="bg-white dark:bg-gray-700 text-center border-b transition duration-300 ease-in-out hover:bg-gray-100"
+                >
                   <td className=" whitespace-nowrap text-sm font-medium text-gray-900 py-2 dark:text-white">
                     {idx + 1}
                   </td>

@@ -4,16 +4,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import instance from "../../axios-config";
+import { useAppDispatch, useAppSelector } from "../hooks/hook";
+import { appActions } from "../../stores/appSlice";
+import Cookies from "js-cookie";
 
 export function Navbar() {
+  const dispatch = useAppDispatch();
+  const login = useAppSelector((state) => state.auth);
   const [openMenu, setOpenMenu] = useState<boolean>(true);
-  const [data, setData] = useState<any>(null);
+
   const router = useRouter();
+
   useEffect(() => {
-    instance.get("/user").then((res: any) => {
-      setData(res.data);
-    });
+    if (login) {
+      (async () => {
+        try {
+          const res = await instance.get("/user");
+          dispatch(appActions.addUser(res.data));
+        } catch (e) {
+          console.log(e);
+        }
+      })();
+    }
   }, []);
+
   const navbarItems = [
     { title: "صفحه اصلی", link: "/" },
     { title: "خدمات", link: "/" },
@@ -21,6 +35,12 @@ export function Navbar() {
     { title: "درباره ما", link: "/" },
     { title: "ارتباط با ما", link: "/contactUs" },
   ];
+
+  const exit = () => {
+    Cookies.remove("accessToken");
+    dispatch(appActions.logout);
+    router.reload();
+  };
 
   return (
     <nav className="relative mx-auto px-6 py-3">
@@ -56,8 +76,18 @@ export function Navbar() {
           </div>
         </div>
 
-        {data?.fullName ? (
-          <div className="text-purple-700 font-bold"> {data?.fullName}</div>
+        {login ? (
+          <div className="text-purple-700 font-bold">
+            <button
+              className="p-2 px-6 text-white bg-primary rounded-lg baseline md:block
+                    shadow-lg
+                  dark:hover:text-white dark:hover:border-purple-400
+                    hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"
+              onClick={exit}
+            >
+              خروج
+            </button>
+          </div>
         ) : (
           <div className="flex">
             {router.pathname !== "/login" &&

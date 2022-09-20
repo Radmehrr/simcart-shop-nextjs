@@ -3,10 +3,14 @@ import instance from "../../axios-config";
 import Filters from "./filters";
 import Pagination from "./pagination";
 import Simcarts from "./simcarts";
+import { RootState } from "../../stores/store";
+import { useAppDispatch, useAppSelector } from "../hooks/hook";
+import { appActions } from "../../stores/appSlice";
 
 const HomeSimcart = () => {
+  const dispatch = useAppDispatch();
+  const simcarts = useAppSelector((state: RootState) => state.simcarts);
   const [loading, setLoading] = useState(false);
-  const [simcarts, setSimcarts] = useState([]);
   const [operator, setOperator] = useState("");
   const [simType, setSimType] = useState("");
   const [status, setStatus] = useState("");
@@ -26,7 +30,7 @@ const HomeSimcart = () => {
           limit,
         },
       });
-      setSimcarts(res.data.simcarts);
+      dispatch(appActions.addSimcarts(res.data.simcarts));
 
       setSimcartsCount(res.data.count);
       setLoading(false);
@@ -62,7 +66,7 @@ const HomeSimcart = () => {
       },
     });
 
-    setSimcarts(res.data.simcarts);
+    dispatch(appActions.addSimcarts(res.data.simcarts));
     setSimcartsCount(res.data.count);
     setLoading(false);
   };

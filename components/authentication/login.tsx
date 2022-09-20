@@ -8,9 +8,13 @@ import * as yup from "yup";
 import instance from "../../axios-config";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { appActions } from "../../stores/appSlice";
+import { useAppDispatch } from "../hooks/hook";
 
 const Login = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
   const schema = yup.object().shape({
     phone: yup.string().required("وارد کردن شماره تلفن الزامی می باشد"),
     password: yup.string().required("وارد کردن رمز ورود الزامی می باشد"),
@@ -30,6 +34,7 @@ const Login = () => {
       toast.success("ورود موفقیت آمیز", {
         position: toast.POSITION.TOP_RIGHT,
       });
+      dispatch(appActions.login());
       router.push("/");
     } catch (e: any) {
       if (e.response.data.message == "Not Found") {
