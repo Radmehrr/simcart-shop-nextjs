@@ -57,7 +57,7 @@ export function Navbar() {
         </div>
 
         {data?.fullName ? (
-          <div>{data?.fullName}</div>
+          <div className="text-purple-700 font-bold"> {data?.fullName}</div>
         ) : (
           <div className="flex">
             {router.pathname !== "/login" &&
@@ -65,7 +65,7 @@ export function Navbar() {
               router.pathname !== "/verify" && (
                 <Link href="/login">
                   <a
-                    className="hidden p-2 px-6 text-white bg-primary rounded-lg baseline md:block
+                    className="p-2 px-6 text-white bg-primary rounded-lg baseline md:block
                     shadow-lg
                   dark:hover:text-white dark:hover:border-purple-400
                     hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"

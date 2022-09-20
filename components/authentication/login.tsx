@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -19,23 +21,33 @@ const Login = () => {
 
   const { errors } = formState;
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    instance
-      .post("/user/auth/login", data)
-      .then((res: any) => {
-        console.log(res);
-        Cookies.set("accessToken", res.data.accessToken, {
-          expires: 1,
-        });
-        router.push("/");
-      })
-      .catch((err: any) => {
-        console.log(err);
+  const onSubmit = async (data: any) => {
+    try {
+      const res = await instance.post("/user/auth/login", data);
+      Cookies.set("accessToken", res.data.accessToken, {
+        expires: 1,
       });
+      toast.success("ورود موفقیت آمیز", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      router.push("/");
+    } catch (e: any) {
+      if (e.response.data.message == "Not Found") {
+        toast.error("شماره موبایل یافت نشد", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      } else if (e.response.data.message == "رمزعبور اشتباه است.") {
+        toast.error("رمزعبور اشتباه است.", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+
+      console.log(e);
+    }
   };
   return (
     <div className="bakhMedium">
+      <ToastContainer />
       <main className="bg-white max-w-lg mx-auto p-8 md:p-12 rounded-lg shadow-2xl">
         <section className="text-center md:-mt-6">
           <Image

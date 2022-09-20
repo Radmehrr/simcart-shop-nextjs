@@ -31,17 +31,18 @@ const Contact = () => {
       setSection("");
       setFile("");
 
-      if (file) {
-        const formData = new FormData();
-        formData.append("file", file);
-        await instance.patch(
-          `/user/ticket/${res.data._id}/upload-photo`,
-          formData,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
-        );
-      }
+      // if (file) {
+      //   const formData = new FormData();
+      //   formData.append("file", file);
+      //   formData.get("file");
+      //   await instance.patch(
+      //     `/user/ticket/${res.data._id}/upload-photo`,
+      //     formData,
+      //     {
+      //       headers: { "Content-Type": "multipart/form-data" },
+      //     }
+      //   );
+      // }
     } catch (e) {
       toast.error("خطا در داده های ارسالی", {
         position: toast.POSITION.TOP_RIGHT,
@@ -59,6 +60,7 @@ const Contact = () => {
 
   return (
     <section>
+      <ToastContainer />
       <div className="bg-white max-w-5xl md:mx-auto px-4 py-5 md:px-12 rounded-lg shadow-2xl mx-2">
         <div>
           <p className="text-gray-900 dark:text-gray-900">
@@ -115,7 +117,7 @@ const Contact = () => {
             >
               فایل پیوست
             </label>
-            <UploadPhoto setFile={setFile} />
+            <UploadPhoto file={file} setFile={setFile} />
           </div>
           <div className="w-full flex mt-5">
             <button
