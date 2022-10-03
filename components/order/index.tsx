@@ -1,9 +1,9 @@
-import { FC, useState } from "react";
+import { FC } from "react";
+
 import Address from "./address";
 import OrderDetails from "./order-details";
 
 const OrderSim: FC<any> = ({ simcart }) => {
-  const [addressText, setAddressText] = useState("");
   return (
     <section>
       <div className="max-w-5xl md:mx-auto rounded-lg shadow-2xl bg-white mx-2 bakhMedium">
@@ -12,7 +12,7 @@ const OrderSim: FC<any> = ({ simcart }) => {
         </div>
 
         <div>
-          <Address addressText={addressText} setAddressText={setAddressText} />
+          <Address simId={simcart._id} />
         </div>
       </div>
     </section>
