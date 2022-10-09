@@ -33,7 +33,7 @@ export function Navbar() {
     { title: "خدمات", link: "/" },
     { title: "بلاگ", link: "/" },
     { title: "درباره ما", link: "/" },
-    { title: "ارتباط با ما", link: "/contactUs" },
+    { title: "ارتباط با ما", link: "/tickets" },
   ];
 
   const exit = () => {

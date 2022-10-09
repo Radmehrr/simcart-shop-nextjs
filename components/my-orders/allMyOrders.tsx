@@ -1,39 +1,6 @@
 import numeral from "numeral";
 import { FC } from "react";
 
-// {
-//     _id: '633a9871490120b1a05ea9bb',
-//     userId: '63060b5eec78d849b32d6084',
-//     simcartId: '631dc34ffe10a6af0a21fbe6',
-//     username: 'رادمهر زبانزد',
-//     phone: '09172562637',
-//     address: {
-//       province: 'آذربایجان شرقی',
-//       city: 'شیراز',
-//       text: 'معالی آباد',
-//       _id: '633a9871490120b1a05ea9bc'
-//     },
-//     price: 200000000,
-//     status: 'جدید',
-//     resnumber: null,
-//     createdAt: 1663583756,
-//     updatedAt: 1663583756,
-//     __v: 0,
-//     simcart: {
-//       _id: '631dc34ffe10a6af0a21fbe6',
-//       phoneNumber: '09194444444',
-//       title: 'توضیحات نمیدونم هرچی',
-//       price: 200000000,
-//       category: 'همراه اول',
-//       status: 'کار کرده',
-//       type: 'دائمی',
-//       rondType: 'رند ۷ رقم یکی',
-//       createdAt: 1661839770,
-//       updatedAt: 1661839770,
-//       __v: 0
-//     }
-//   }
-
 const AllMyOrders: FC<any> = ({ orders }) => {
   console.log(orders);
   return (
