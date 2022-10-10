@@ -3,25 +3,29 @@ import instance from "../../axios-config";
 import Layout from "../../components/layout/layout";
 import TicketItem from "../../components/tickets/ticket-item";
 
-const TicketItemPage: NextPage = () => {
+const TicketItemPage: NextPage = (props: any) => {
   return (
     <Layout>
-      <TicketItem />
+      <TicketItem ticket={props.ticket} />
     </Layout>
   );
 };
 
-// export async function getServerSideProps(context: any) {
-//   const id = context.query.id;
-//   const res = await instance.get("/user/ticket", {
-//     params: {
-//       ticketId: id,
-//     },
-//   });
-//   const simcart = res.data.simcarts[0];
-//   return {
-//     props: { simcart },
-//   };
-// }
+export async function getServerSideProps(context: any) {
+  const accessToken = context.req.cookies["accessToken"];
+
+  const id = context.query.id;
+  const res = await instance.get(`/user/ticket/${id}`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  const ticket = res.data[0];
+
+  return {
+    props: { ticket },
+  };
+}
 
 export default TicketItemPage;
