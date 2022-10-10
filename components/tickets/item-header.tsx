@@ -6,7 +6,7 @@ const ItemHeader: FC<any> = ({ ticket }) => {
       <div>
         <div className="flex justify-between mx-5 py-4 text-lg dark:text-gray-900">
           <p>{ticket.subject}</p>
-          <p className="text-green-600">{ticket.createdAt}</p>
+          <p className="text-green-600">{`#${ticket.createdAt}`}</p>
         </div>
 
         <div className="flex justify-between mx-5 text-gray-500">
