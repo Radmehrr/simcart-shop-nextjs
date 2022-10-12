@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import instance from "../../axios-config";
 import Modal from "../modal";
 import Warn from "../svg/warn";
+import { getDate } from "../utils/moment";
 
 const Chats: FC<any> = ({ messages }) => {
   const [visible, setVisible] = useState(false);
@@ -52,7 +53,15 @@ const Chats: FC<any> = ({ messages }) => {
                 </div>
                 <div className="mr-1 md:mx-4">
                   <p>{message.senderFullname}</p>
-                  <p>01 شهریور 1401، 10:33:28</p>
+                  {(() => {
+                    const date = getDate(message.createdAt);
+                    console.log(date);
+                    return (
+                      <div>
+                        <p>{`${date.day} ${date.month} ${date.year}, ${date.hour}:${date.minutes}:${date.seconds}`}</p>
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
               {(() => {

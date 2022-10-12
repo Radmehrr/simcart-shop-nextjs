@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { FC } from "react";
+import { FromNow } from "../utils/moment";
 
 const MyTickets: FC<any> = ({ tickets }) => {
+  if (tickets.length == 0) {
+    return (
+      <div className="w-full text-center my-10">
+        <p>هیچ تیکتی وجود ندارد</p>
+      </div>
+    );
+  }
   return (
     <div className="w-full">
       <div className="mx-2">
@@ -49,11 +57,9 @@ const MyTickets: FC<any> = ({ tickets }) => {
                     id: tik._id,
                   },
                 }}
+                key={idx}
               >
-                <tr
-                  key={idx}
-                  className="bg-white cursor-pointer dark:bg-gray-700 text-center border-b transition duration-300 ease-in-out hover:bg-gray-100"
-                >
+                <tr className="bg-white cursor-pointer dark:bg-gray-700 text-center border-b transition duration-300 ease-in-out hover:bg-gray-100">
                   <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white py-3">
                     {`#${tik.createdAt}`}
                     {/* 1663583756 */}
@@ -92,7 +98,7 @@ const MyTickets: FC<any> = ({ tickets }) => {
                     {tik.section}
                   </td>
                   <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                    {tik.updatedAt}
+                    {FromNow(tik.updatedAt)}
                   </td>
                 </tr>
               </Link>

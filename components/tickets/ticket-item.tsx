@@ -3,6 +3,7 @@ import React, { FC, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import instance from "../../axios-config";
+import Modal from "../modal";
 import Chats from "./chats";
 import ItemHeader from "./item-header";
 
@@ -10,6 +11,7 @@ const TicketItem: FC<any> = ({ ticket }) => {
   const router = useRouter();
   const id = router.query.id;
   const [message, setMessage] = useState("");
+
   const onHandleMessage = async (e: any) => {
     e.preventDefault();
     if (message) {

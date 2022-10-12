@@ -12,6 +12,16 @@ const LoginPage: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const phoneNumber = context.req.cookies["phoneNumber"];
+  const accessToken = context.req.cookies["accessToken"];
+
+  if (accessToken) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   if (phoneNumber) {
     return {

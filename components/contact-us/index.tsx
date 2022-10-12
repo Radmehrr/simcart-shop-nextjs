@@ -23,26 +23,28 @@ const Contact = () => {
         section: sec,
       });
 
-      toast.success("تیکت با موفقیت ثبت شد.", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
       setDescription("");
       setTitle("");
       setSection("");
-      setFile("");
 
-      // if (file) {
-      //   const formData = new FormData();
-      //   formData.append("file", file);
-      //   formData.get("file");
-      //   await instance.patch(
-      //     `/user/ticket/${res.data._id}/upload-photo`,
-      //     formData,
-      //     {
-      //       headers: { "Content-Type": "multipart/form-data" },
-      //     }
-      //   );
-      // }
+      if (file) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.get("file");
+        await instance.patch(
+          `/user/ticket/${res.data._id}/upload-photo`,
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
+      }
+
+      toast.success("تیکت با موفقیت ثبت شد.", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+
+      setFile("");
     } catch (e) {
       toast.error("خطا در داده های ارسالی", {
         position: toast.POSITION.TOP_RIGHT,
