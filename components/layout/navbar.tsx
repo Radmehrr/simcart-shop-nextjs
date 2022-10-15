@@ -7,11 +7,12 @@ import instance from "../../axios-config";
 import { useAppDispatch, useAppSelector } from "../hooks/hook";
 import { appActions } from "../../stores/appSlice";
 import Cookies from "js-cookie";
+import Loading from "../loading";
 
 export function Navbar() {
   const dispatch = useAppDispatch();
   const login = useAppSelector((state) => state.auth);
-  const user = useAppSelector((state) => state.user);
+
   const [openMenu, setOpenMenu] = useState<boolean>(true);
 
   const router = useRouter();
@@ -19,23 +20,27 @@ export function Navbar() {
   useEffect(() => {
     if (login) {
       (async () => {
-        try {
-          const res = await instance.get("/user");
-
-          dispatch(appActions.addUser(res.data));
-        } catch (e) {
-          console.log(e);
-        }
+        const res = await instance.get("/user");
+        dispatch(appActions.addUser(res.data));
       })();
     }
-  }, []);
+  }, [login]);
 
-  const navbarItems = [
+  const user: any = useAppSelector((state) => state.user);
+
+  const userNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
     { title: "خدمات", link: "/" },
     { title: "بلاگ", link: "/" },
     { title: "درباره ما", link: "/" },
     { title: "ارتباط با ما", link: "/tickets" },
+  ];
+  const adminNavbarItems = [
+    { title: "صفحه اصلی", link: "/" },
+    { title: "سیمکارت", link: "/admin/simcarts" },
+    { title: "کاربران", link: "/admin/users" },
+    { title: "سفارشات", link: "/admin/orders" },
+    { title: "تیکت ها", link: "/admin/tickets" },
   ];
 
   const exit = () => {
@@ -63,28 +68,56 @@ export function Navbar() {
             </a>
           </Link>
         </div>
-        <div className="hidden md:flex space-x-8 bakhMedium">
-          {navbarItems.map((item: any) => {
+        {(() => {
+          if (user.role === "admin" || user.role === "support") {
             return (
-              <Link key={item.title} href={item.link}>
-                <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                  {item.title}
-                </a>
-              </Link>
-            );
-          })}
+              <div className="hidden md:flex space-x-8 bakhMedium">
+                {adminNavbarItems.map((item: any) => {
+                  return (
+                    <Link key={item.title} href={item.link}>
+                      <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                        {item.title}
+                      </a>
+                    </Link>
+                  );
+                })}
 
-          {login && (
-            <Link href="/my-orders">
-              <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                سفارشات
-              </a>
-            </Link>
-          )}
-          <div>
-            <ThemeChanger />
-          </div>
-        </div>
+                <div>
+                  <ThemeChanger />
+                </div>
+              </div>
+            );
+          } else {
+            return (
+              <div className="hidden md:flex space-x-8 bakhMedium">
+                {userNavbarItems.map((item: any) => {
+                  return (
+                    <Link key={item.title} href={item.link}>
+                      <a
+                        className="hover:text-primaryDark md:ml-4 hover:border-b-2
+                       hover:transition-all hover:animate-bounce hover:border-purple-500
+                        dark:hover:text-white"
+                      >
+                        {item.title}
+                      </a>
+                    </Link>
+                  );
+                })}
+
+                {login && (
+                  <Link href="/my-orders">
+                    <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                      سفارشات
+                    </a>
+                  </Link>
+                )}
+                <div>
+                  <ThemeChanger />
+                </div>
+              </div>
+            );
+          }
+        })()}
 
         {login ? (
           <div className="text-purple-700 font-bold">
@@ -141,16 +174,43 @@ export function Navbar() {
           !openMenu && "top-[40px]"
         }`}
         >
-          {navbarItems.map((item: any, index) => {
-            return (
-              <Link key={index} href={item.link}>
-                <a className="hover:text-primaryDark md:ml-4">{item.title}</a>
-              </Link>
-            );
-          })}
-          <div>
-            <ThemeChanger />
-          </div>
+          {(() => {
+            if (user.role === "admin" || user.role === "support") {
+              return (
+                <>
+                  {adminNavbarItems.map((item: any, index) => {
+                    return (
+                      <Link key={index} href={item.link}>
+                        <a className="hover:text-primaryDark md:ml-4">
+                          {item.title}
+                        </a>
+                      </Link>
+                    );
+                  })}
+                  <div>
+                    <ThemeChanger />
+                  </div>
+                </>
+              );
+            } else {
+              return (
+                <>
+                  {userNavbarItems.map((item: any, index) => {
+                    return (
+                      <Link key={index} href={item.link}>
+                        <a className="hover:text-primaryDark md:ml-4">
+                          {item.title}
+                        </a>
+                      </Link>
+                    );
+                  })}
+                  <div>
+                    <ThemeChanger />
+                  </div>
+                </>
+              );
+            }
+          })()}
         </div>
       </div>
     </nav>

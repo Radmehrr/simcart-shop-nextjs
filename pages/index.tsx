@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import HomeSimcart from "../components/home";
 import Layout from "../components/layout/layout";
 
-const Home: NextPage = () => {
+const Home: NextPage = (props: any) => {
   return (
     <Layout>
       <HomeSimcart />
@@ -12,6 +12,7 @@ const Home: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const phoneNumber = context.req.cookies["phoneNumber"];
+  const accessToken = context.req.cookies["accessToken"];
 
   if (phoneNumber) {
     return {
