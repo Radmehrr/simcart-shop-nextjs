@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { FC } from "react";
+import { useAppSelector } from "../hooks/hook";
 import { FromNow } from "../utils/moment";
 
-const MyTickets: FC<any> = ({ tickets }) => {
+const MyTickets: FC<any> = () => {
+  const tickets = useAppSelector((state) => state.tickets);
   if (tickets.length == 0) {
     return (
       <div className="w-full text-center my-10">
@@ -62,7 +64,6 @@ const MyTickets: FC<any> = ({ tickets }) => {
                 <tr className="bg-white cursor-pointer dark:bg-gray-700 text-center border-b transition duration-300 ease-in-out hover:bg-gray-100">
                   <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white py-3">
                     {`#${tik.createdAt}`}
-                    {/* 1663583756 */}
                   </td>
                   <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                     {tik.subject}

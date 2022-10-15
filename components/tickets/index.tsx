@@ -3,7 +3,7 @@ import { FC } from "react";
 import Plus from "../svg/plus";
 import MyTickets from "./myTickets";
 
-const Tickets: FC<any> = ({ tickets }) => {
+const Tickets: FC<any> = () => {
   return (
     <section>
       <div className="max-w-5xl md:mx-auto rounded-lg shadow-2xl bg-white mx-2 bakhMedium">
@@ -17,7 +17,7 @@ const Tickets: FC<any> = ({ tickets }) => {
         </div>
 
         <div>
-          <MyTickets tickets={tickets} />
+          <MyTickets />
         </div>
       </div>
     </section>

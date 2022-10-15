@@ -3,11 +3,13 @@ import React, { FC, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import instance from "../../axios-config";
-import Modal from "../modal";
+import { appActions } from "../../stores/appSlice";
+import { useAppDispatch } from "../hooks/hook";
 import Chats from "./chats";
 import ItemHeader from "./item-header";
 
 const TicketItem: FC<any> = ({ ticket }) => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const id = router.query.id;
   const [message, setMessage] = useState("");
@@ -19,6 +21,7 @@ const TicketItem: FC<any> = ({ ticket }) => {
         const res = await instance.patch(`/user/ticket/${id}/reply-to-answer`, {
           text: message,
         });
+        dispatch(appActions.updateMessage(res.data.messages));
         toast.success("پیام ارسال شد.", {
           position: toast.POSITION.TOP_RIGHT,
         });
@@ -68,7 +71,7 @@ const TicketItem: FC<any> = ({ ticket }) => {
 
         <div className="h-1 border-t border-gray-300 mx-4 mt-4"></div>
 
-        <Chats messages={ticket.messages} />
+        <Chats />
         <div className="h-2"></div>
       </div>
     </section>

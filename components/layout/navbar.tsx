@@ -11,6 +11,7 @@ import Cookies from "js-cookie";
 export function Navbar() {
   const dispatch = useAppDispatch();
   const login = useAppSelector((state) => state.auth);
+  const user = useAppSelector((state) => state.user);
   const [openMenu, setOpenMenu] = useState<boolean>(true);
 
   const router = useRouter();
@@ -20,6 +21,7 @@ export function Navbar() {
       (async () => {
         try {
           const res = await instance.get("/user");
+
           dispatch(appActions.addUser(res.data));
         } catch (e) {
           console.log(e);

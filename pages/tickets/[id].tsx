@@ -1,9 +1,17 @@
 import { NextPage } from "next";
+import { useEffect } from "react";
 import instance from "../../axios-config";
+import { useAppDispatch } from "../../components/hooks/hook";
 import Layout from "../../components/layout/layout";
 import TicketItem from "../../components/tickets/ticket-item";
+import { appActions } from "../../stores/appSlice";
 
 const TicketItemPage: NextPage = (props: any) => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(appActions.addTicket(props.ticket));
+    dispatch(appActions.addMessage(props.ticket.messages));
+  }, []);
   return (
     <Layout>
       <TicketItem ticket={props.ticket} />

@@ -2,7 +2,6 @@ import numeral from "numeral";
 import { FC } from "react";
 
 const AllMyOrders: FC<any> = ({ orders }) => {
-  console.log(orders);
   return (
     <section>
       <div className="w-full">

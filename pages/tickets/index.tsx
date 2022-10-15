@@ -1,12 +1,20 @@
 import { GetServerSideProps, NextPage } from "next";
+import { useEffect } from "react";
 import instance from "../../axios-config";
+import { useAppDispatch } from "../../components/hooks/hook";
 import Layout from "../../components/layout/layout";
 import Tickets from "../../components/tickets";
+import { appActions } from "../../stores/appSlice";
 
 const TicketsPage: NextPage = (props: any) => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(appActions.addTickets(props.tickets));
+  }, []);
+
   return (
     <Layout>
-      <Tickets tickets={props.tickets} />
+      <Tickets />
     </Layout>
   );
 };
