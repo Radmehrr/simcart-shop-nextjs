@@ -7,7 +7,6 @@ import instance from "../../axios-config";
 import { useAppDispatch, useAppSelector } from "../hooks/hook";
 import { appActions } from "../../stores/appSlice";
 import Cookies from "js-cookie";
-import Loading from "../loading";
 
 export function Navbar() {
   const dispatch = useAppDispatch();
@@ -46,7 +45,7 @@ export function Navbar() {
   const exit = () => {
     Cookies.remove("accessToken");
     dispatch(appActions.logout);
-    router.reload();
+    router.push("/");
   };
 
   return (

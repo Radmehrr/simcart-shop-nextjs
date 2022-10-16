@@ -86,10 +86,11 @@ const HomeSimcart = () => {
         />
 
         <Simcarts simcarts={simcarts} loading={loading} />
+
         <Pagination
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          simcartPerPage={simcarts.length}
+          dataPerPage={simcarts.length}
           limit={limit}
         />
       </div>

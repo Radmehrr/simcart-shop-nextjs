@@ -11,4 +11,20 @@ const AdminSimcarts: NextPage = () => {
   );
 };
 
+export async function getServerSideProps(context: any) {
+  const accessToken = context.req.cookies["accessToken"];
+  if (!accessToken) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
+
 export default AdminSimcarts;

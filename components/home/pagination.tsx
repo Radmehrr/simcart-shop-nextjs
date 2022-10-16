@@ -5,7 +5,7 @@ import ArrowRight from "../svg/previous";
 const Pagination: FC<any> = ({
   currentPage,
   setCurrentPage,
-  simcartPerPage,
+  dataPerPage,
   limit,
 }) => {
   return (
@@ -14,7 +14,8 @@ const Pagination: FC<any> = ({
         className="inline-flex
         items-center py-2 px-4 mr-3 ml-2 text-sm font-medium text-gray-500 bg-white rounded-lg
         border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800
-        dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white
+        disabled:cursor-not-allowed"
         onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage <= 1}
       >
@@ -22,9 +23,12 @@ const Pagination: FC<any> = ({
         قبلی
       </button>
       <button
-        className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-500
+        bg-white rounded-lg border border-gray-300 hover:bg-gray-100
+        hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+        dark:hover:bg-gray-700 dark:hover:text-white disabled:cursor-not-allowed"
         onClick={() => setCurrentPage(currentPage + 1)}
-        disabled={limit > simcartPerPage}
+        disabled={limit > dataPerPage}
       >
         بعدی
         <ArrowRight />
