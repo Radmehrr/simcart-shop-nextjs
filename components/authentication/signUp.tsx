@@ -24,7 +24,6 @@ const SignUp = () => {
     instance
       .post("/user/auth/signUp", data)
       .then((res: any) => {
-        console.log(res);
         Cookies.set("phoneNumber", res.data.phone);
         const phoneNumber = Cookies.get("phoneNumber");
         if (phoneNumber) {

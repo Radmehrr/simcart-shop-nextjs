@@ -62,6 +62,9 @@ export const appReducer = createSlice({
     addOrders: (state, action) => {
       state.orders = action.payload;
     },
+    updateAdminOrders: (state, action) => {
+      state.orders = action.payload;
+    },
     addOrderItem: (state, action) => {
       state.order = action.payload;
     },

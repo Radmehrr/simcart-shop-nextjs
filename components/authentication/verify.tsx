@@ -9,7 +9,6 @@ const Verify = ({ phoneNumber }: any) => {
   const [otpValue, setOtpValue] = useState("");
 
   const handleChange = (otp: any) => {
-    console.log(otp);
     setOtpValue(otp);
   };
 
@@ -21,7 +20,6 @@ const Verify = ({ phoneNumber }: any) => {
         code: otpValue,
       })
       .then((res: any) => {
-        console.log(res);
         Cookies.set("accessToken", res.data.accessToken, {
           expires: 1,
         });

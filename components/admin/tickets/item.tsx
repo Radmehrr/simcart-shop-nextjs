@@ -7,6 +7,7 @@ import { appActions } from "../../../stores/appSlice";
 import { useAppDispatch } from "../../hooks/hook";
 import AdminChat from "./admin-chat";
 import AdminItemHeader from "./admin-item-header";
+import ShowUserUploadedPhotos from "./show-user-uploaded-photos";
 
 const TicketItem: FC<any> = ({ ticket }) => {
   const [message, setMessage] = useState("");
@@ -78,6 +79,14 @@ const TicketItem: FC<any> = ({ ticket }) => {
 
         <div className="h-1 border-t border-gray-300 mx-4 mt-4"></div>
 
+        <div className="mt-4">
+          <p className="mr-2">عکس های ارسالی</p>
+          {ticket.photos?.length ? (
+            <ShowUserUploadedPhotos photos={ticket.photos} />
+          ) : (
+            <p className="mr-2 text-gray-400">هنوز عکسی ارسال نشده است</p>
+          )}
+        </div>
         <AdminChat />
         <div className="h-2"></div>
       </div>

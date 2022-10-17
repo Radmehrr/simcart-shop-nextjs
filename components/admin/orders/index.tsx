@@ -2,15 +2,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import instance from "../../../axios-config";
 import { appActions } from "../../../stores/appSlice";
+import Pagination from "../../home/pagination";
 import { useAppDispatch, useAppSelector } from "../../hooks/hook";
-import { FromNow, getDate } from "../../utils/moment";
+import { FromNow } from "../../utils/moment";
 
 const Orders = () => {
+  const orders = useAppSelector((state) => state.orders);
+  const dispatch = useAppDispatch();
+
   const [limit, setLimit] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [fullName, setFullName] = useState("");
-  const orders = useAppSelector((state) => state.orders);
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     (async () => {
@@ -25,7 +27,8 @@ const Orders = () => {
           limit,
         },
       });
-      dispatch(appActions.addOrders(res.data));
+
+      dispatch(appActions.updateAdminOrders(res.data));
     })();
   }, [currentPage, fullName]);
 
@@ -37,7 +40,7 @@ const Orders = () => {
         dark:text-gray-900"
       >
         <div className="flex justify-between items-center">
-          <p className="text-lg">کاربران</p>
+          <p className="text-lg">سفارش ها</p>
           <input
             type="text"
             className="bg-gray-50 border border-gray-300 text-gray-900
@@ -126,6 +129,15 @@ const Orders = () => {
               </tbody>
             </table>
           </div>
+        </div>
+
+        <div>
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            dataPerPage={orders.length}
+            limit={limit}
+          />
         </div>
       </div>
     </section>

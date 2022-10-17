@@ -34,7 +34,7 @@ const AddSimcart = () => {
         ...data,
         title: "توضیحات نمیدونم هرچی",
       });
-      console.log(res);
+
       toast.success("سیمکارت با موفقیت ثبت شد.", {
         position: toast.POSITION.TOP_RIGHT,
       });

@@ -23,7 +23,6 @@ const Address: FC<any> = ({ simId }) => {
         simcartId: simId,
         address: data,
       });
-      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -46,8 +45,6 @@ const Address: FC<any> = ({ simId }) => {
             dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-900
             ${errors.province ? "border-red-400" : ""}
             `}
-                // onChange={(e) => setProvince(e.target.value)}
-                // value={province}
                 {...register("province")}
               >
                 <option value="">انتخاب کنید</option>
@@ -63,7 +60,6 @@ const Address: FC<any> = ({ simId }) => {
               <label htmlFor="city">شهر</label>
               <input
                 type="text"
-                // value={city}
                 className={`bg-gray-50 border border-gray-300 text-md rounded-lg
            focus:ring-blue-500 focus:border-blue-500 p-1.5
             dark:bg-gray-700 w-full
@@ -72,7 +68,6 @@ const Address: FC<any> = ({ simId }) => {
             dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-900 outline-none
             ${errors.city ? "border-red-400" : ""}
             `}
-                // onChange={(e) => setCity(e.target.value)}
                 {...register("city")}
               />
             </div>
@@ -110,7 +105,6 @@ const Address: FC<any> = ({ simId }) => {
               className="bg-primary hover:bg-purple-800
             rounded-md py-2 px-2 text-white font-bold 
             mx-3 mb-2"
-              // onClick={submitOrder}
             >
               ثبت سفارش و پرداخت
             </button>
