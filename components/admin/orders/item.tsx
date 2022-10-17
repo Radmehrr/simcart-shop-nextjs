@@ -1,9 +1,8 @@
 import numeral from "numeral";
-import { useAppSelector } from "../../hooks/hook";
+import { FC } from "react";
 import { getDate } from "../../utils/moment";
 
-const OrderItem = () => {
-  const order: any = useAppSelector((state) => state.order);
+const OrderItem: FC<any> = ({ order }) => {
   const date = getDate(order.createdAt);
 
   return (

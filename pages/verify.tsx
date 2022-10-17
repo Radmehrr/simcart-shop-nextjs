@@ -4,14 +4,12 @@ import Verify from "../components/authentication/verify";
 import Layout from "../components/layout/layout";
 
 const VerifyPage: NextPage = () => {
-  const phoneNumber = Cookies.get("phoneNumber")
-  console.log(phoneNumber)
+  const phoneNumber = Cookies.get("phoneNumber");
   return (
     <Layout>
       <Verify phoneNumber={phoneNumber} />
     </Layout>
   );
 };
-
 
 export default VerifyPage;

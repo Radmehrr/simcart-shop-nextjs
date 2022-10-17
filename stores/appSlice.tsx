@@ -10,6 +10,8 @@ type stateType = {
   users: [];
   orders: [];
   order: {};
+  adminAllTickets: [];
+  adminTicketItem: [];
 };
 
 const initialState: stateType = {
@@ -22,6 +24,8 @@ const initialState: stateType = {
   users: [],
   orders: [],
   order: {},
+  adminAllTickets: [],
+  adminTicketItem: [],
 };
 
 export const appReducer = createSlice({
@@ -60,6 +64,12 @@ export const appReducer = createSlice({
     },
     addOrderItem: (state, action) => {
       state.order = action.payload;
+    },
+    addAdminTickets: (state, action) => {
+      state.adminAllTickets = action.payload;
+    },
+    addAdminTicketItem: (state, action) => {
+      state.adminTicketItem = action.payload;
     },
   },
 });

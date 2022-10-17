@@ -1,20 +1,21 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import instance from "../../../axios-config";
 import { appActions } from "../../../stores/appSlice";
+import Pagination from "../../home/pagination";
 import { useAppDispatch, useAppSelector } from "../../hooks/hook";
-import { FromNow, getDate } from "../../utils/moment";
+import { FromNow } from "../../utils/moment";
 
-const Orders = () => {
+const Tickets = () => {
   const [limit, setLimit] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [fullName, setFullName] = useState("");
-  const orders = useAppSelector((state) => state.orders);
+  const tickets = useAppSelector((state) => state.adminAllTickets);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     (async () => {
-      const res = await instance.get("/admin/order", {
+      const res = await instance.get("/admin/ticket", {
         params: {
           ...(fullName && {
             fullName: fullName,
@@ -25,7 +26,7 @@ const Orders = () => {
           limit,
         },
       });
-      dispatch(appActions.addOrders(res.data));
+      dispatch(appActions.addAdminTickets(res.data));
     })();
   }, [currentPage, fullName]);
 
@@ -37,7 +38,7 @@ const Orders = () => {
         dark:text-gray-900"
       >
         <div className="flex justify-between items-center">
-          <p className="text-lg">کاربران</p>
+          <p className="text-lg">تیکت ها</p>
           <input
             type="text"
             className="bg-gray-50 border border-gray-300 text-gray-900
@@ -90,12 +91,12 @@ const Orders = () => {
                 </tr>
               </thead>
               <tbody>
-                {orders.map((order: any, idx: number) => (
+                {tickets.map((ticket: any, idx: number) => (
                   <Link
                     href={{
-                      pathname: "/admin/orders/[orderId]",
+                      pathname: "/admin/tickets/[ticketId]",
                       query: {
-                        orderId: order._id,
+                        ticketId: ticket._id,
                       },
                     }}
                     key={idx}
@@ -109,16 +110,16 @@ const Orders = () => {
                         {idx + 1}
                       </td>
                       <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                        {order.username}
+                        {ticket.fullName}
                       </td>
                       <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                        {order.phone}
+                        {ticket.userPhone}
                       </td>
                       <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                        {order.status}
+                        {ticket.status}
                       </td>
                       <td className=" whitespace-nowrap hidden sm:block pt-2 text-sm font-medium text-gray-900 dark:text-white">
-                        {FromNow(order.createdAt)}
+                        {FromNow(ticket.createdAt)}
                       </td>
                     </tr>
                   </Link>
@@ -127,9 +128,18 @@ const Orders = () => {
             </table>
           </div>
         </div>
+
+        <div>
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            dataPerPage={tickets.length}
+            limit={limit}
+          />
+        </div>
       </div>
     </section>
   );
 };
 
-export default Orders;
+export default Tickets;

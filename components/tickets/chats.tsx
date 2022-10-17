@@ -60,7 +60,6 @@ const Chats: FC<any> = () => {
                     <p>{message.senderFullname}</p>
                     {(() => {
                       const date = getDate(message.createdAt);
-                      console.log(date);
                       return (
                         <div>
                           <p>{`${date.day} ${date.month} ${date.year}, ${date.hour}:${date.minutes}:${date.seconds}`}</p>

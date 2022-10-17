@@ -13,7 +13,7 @@ const Order: NextPage = (props: any) => {
 
 export async function getServerSideProps(context: any) {
   const id = context.query.id;
-  console.log(id);
+
   const res = await instance.get("/user/simcart", {
     params: {
       simcartId: id,
