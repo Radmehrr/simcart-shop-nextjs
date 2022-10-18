@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import instance from "../../axios-config";
 import { appActions } from "../../stores/appSlice";
+import UploadPhoto from "../contact-us/upload-photo";
 import { useAppDispatch } from "../hooks/hook";
 import Chats from "./chats";
 import ItemHeader from "./item-header";
@@ -13,6 +14,7 @@ const TicketItem: FC<any> = ({ ticket }) => {
   const router = useRouter();
   const id = router.query.id;
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState("");
 
   const onHandleMessage = async (e: any) => {
     e.preventDefault();
@@ -21,12 +23,27 @@ const TicketItem: FC<any> = ({ ticket }) => {
         const res = await instance.patch(`/user/ticket/${id}/reply-to-answer`, {
           text: message,
         });
+
+        if (file) {
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.get("file");
+          await instance.patch(`/user/ticket/${id}/upload-photo`, formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          });
+        }
+
         dispatch(appActions.updateMessage(res.data.messages));
+        setMessage("");
+        setFile("");
+
         toast.success("پیام ارسال شد.", {
           position: toast.POSITION.TOP_RIGHT,
         });
-        setMessage("");
       } catch (e) {
+        toast.error("خطا در داده های ارسالی", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
         console.log(e);
       }
     }
@@ -68,7 +85,9 @@ const TicketItem: FC<any> = ({ ticket }) => {
             </button>
           </div>
         </form>
-
+        <div className="my-2 mx-4">
+          <UploadPhoto file={file} setFile={setFile} />
+        </div>
         <div className="h-1 border-t border-gray-300 mx-4 mt-4"></div>
 
         <Chats />
