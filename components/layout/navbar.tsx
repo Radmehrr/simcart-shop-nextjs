@@ -12,7 +12,6 @@ import useSWR from "swr";
 export function Navbar() {
   const dispatch = useAppDispatch();
   const login = useAppSelector((state) => state.auth);
-  // const { data, error } = useSWR("/admin/ticket?status=در حال بررسی");
 
   const [openMenu, setOpenMenu] = useState<boolean>(true);
 
@@ -28,6 +27,16 @@ export function Navbar() {
   }, [login]);
 
   const user: any = useAppSelector((state) => state.user);
+
+  const { data: adminPendingTicket, error: adminTicketError } = useSWR<any>(
+    "/admin/ticket?status=در حال بررسی",
+    SWRfetcher
+  );
+
+  const { data: userRespondedTicket, error: userTicketError } = useSWR<any>(
+    "/user/ticket?status=پاسخ داده",
+    SWRfetcher
+  );
 
   const userNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
@@ -77,9 +86,10 @@ export function Navbar() {
                       <Link key={item.title} href={item.link}>
                         <a className="hover:text-primaryDark md:ml-4 flex hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
                           {item.title}
-                          {item.title == "تیکت ها" && (
-                            <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
-                          )}
+                          {item.title == "تیکت ها" &&
+                            adminPendingTicket.data.length > 0 && (
+                              <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
+                            )}
                         </a>
                       </Link>
                     </>
@@ -100,9 +110,13 @@ export function Navbar() {
                       <a
                         className="hover:text-primaryDark md:ml-4 hover:border-b-2
                        hover:transition-all hover:animate-bounce hover:border-purple-500
-                        dark:hover:text-white"
+                        dark:hover:text-white flex"
                       >
                         {item.title}
+                        {item.title == "ارتباط با ما" &&
+                          userRespondedTicket.data.length > 0 && (
+                            <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
+                          )}
                       </a>
                     </Link>
                   );
@@ -185,8 +199,12 @@ export function Navbar() {
                   {adminNavbarItems.map((item: any, index) => {
                     return (
                       <Link key={index} href={item.link}>
-                        <a className="hover:text-primaryDark md:ml-4">
+                        <a className="hover:text-primaryDark md:ml-4 flex">
                           {item.title}
+                          {item.title == "تیکت ها" &&
+                            adminPendingTicket.data.length > 0 && (
+                              <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
+                            )}
                         </a>
                       </Link>
                     );
@@ -202,8 +220,12 @@ export function Navbar() {
                   {userNavbarItems.map((item: any, index) => {
                     return (
                       <Link key={index} href={item.link}>
-                        <a className="hover:text-primaryDark md:ml-4">
+                        <a className="hover:text-primaryDark md:ml-4 flex">
                           {item.title}
+                          {item.title == "ارتباط با ما" &&
+                            userRespondedTicket.data.length > 0 && (
+                              <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
+                            )}
                         </a>
                       </Link>
                     );

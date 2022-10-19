@@ -28,6 +28,7 @@ const TicketItem: FC<any> = ({ ticket }) => {
         toast.success("پیام ارسال شد.", {
           position: toast.POSITION.TOP_RIGHT,
         });
+        setMessage("");
       } catch (error) {
         console.log(error);
       }
