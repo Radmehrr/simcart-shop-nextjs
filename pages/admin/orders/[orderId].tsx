@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import React, { useEffect } from "react";
 import instance from "../../../axios-config";
 import OrderItem from "../../../components/admin/orders/item";
@@ -14,6 +15,9 @@ const AdminOrderItem: NextPage = (props: any) => {
 
   return (
     <Layout>
+      <Head>
+        <title>{`سفارش ${props.order.simcart.phoneNumber}`}</title>
+      </Head>
       <OrderItem order={props.order} />
     </Layout>
   );

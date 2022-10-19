@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useEffect } from "react";
 import instance from "../../../axios-config";
 import TicketItem from "../../../components/admin/tickets/item";
@@ -14,6 +15,9 @@ const AdminTicketItem = (props: any) => {
 
   return (
     <Layout>
+      <Head>
+        <title>{props.ticket.subject}</title>
+      </Head>
       <TicketItem ticket={props.ticket} />
     </Layout>
   );

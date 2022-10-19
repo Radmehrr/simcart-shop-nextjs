@@ -23,6 +23,7 @@ const Address: FC<any> = ({ simId }) => {
         simcartId: simId,
         address: data,
       });
+      console.log(result);
     } catch (error) {
       console.log(error);
     }

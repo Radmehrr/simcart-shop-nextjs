@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import { useEffect } from "react";
 import instance from "../../axios-config";
 import { useAppDispatch } from "../../components/hooks/hook";
@@ -14,6 +15,9 @@ const TicketItemPage: NextPage = (props: any) => {
   }, []);
   return (
     <Layout>
+      <Head>
+        <title>{`${props.ticket.subject}`}</title>
+      </Head>
       <TicketItem ticket={props.ticket} />
     </Layout>
   );

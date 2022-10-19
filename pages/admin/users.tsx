@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import { useEffect } from "react";
 import instance from "../../axios-config";
 import Users from "../../components/admin/users";
@@ -14,6 +15,9 @@ const AdminUsers: NextPage = (props: any) => {
 
   return (
     <Layout>
+      <Head>
+        <title>کاربران</title>
+      </Head>
       <Users />
     </Layout>
   );

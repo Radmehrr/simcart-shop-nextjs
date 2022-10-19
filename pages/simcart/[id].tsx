@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import instance from "../../axios-config";
 import SimItem from "../../components/item";
 import Layout from "../../components/layout/layout";
@@ -6,6 +7,9 @@ import Layout from "../../components/layout/layout";
 const Simcart: NextPage = (props: any) => {
   return (
     <Layout>
+      <Head>
+        <title>{`سیمکارت ${props.simcart.phoneNumber}`}</title>
+      </Head>
       <SimItem simcart={props.simcart} />
     </Layout>
   );

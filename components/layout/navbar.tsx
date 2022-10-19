@@ -3,14 +3,16 @@ import ThemeChanger from "../themeChanger";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import instance from "../../axios-config";
+import instance, { SWRfetcher } from "../../axios-config";
 import { useAppDispatch, useAppSelector } from "../hooks/hook";
 import { appActions } from "../../stores/appSlice";
 import Cookies from "js-cookie";
+import useSWR from "swr";
 
 export function Navbar() {
   const dispatch = useAppDispatch();
   const login = useAppSelector((state) => state.auth);
+  // const { data, error } = useSWR("/admin/ticket?status=در حال بررسی");
 
   const [openMenu, setOpenMenu] = useState<boolean>(true);
 
@@ -29,9 +31,7 @@ export function Navbar() {
 
   const userNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
-    { title: "خدمات", link: "/" },
-    { title: "بلاگ", link: "/" },
-    { title: "درباره ما", link: "/" },
+    { title: "درباره ما", link: "/about-us" },
     { title: "ارتباط با ما", link: "/tickets" },
   ];
   const adminNavbarItems = [
@@ -73,11 +73,16 @@ export function Navbar() {
               <div className="hidden md:flex space-x-8 bakhMedium">
                 {adminNavbarItems.map((item: any) => {
                   return (
-                    <Link key={item.title} href={item.link}>
-                      <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                        {item.title}
-                      </a>
-                    </Link>
+                    <>
+                      <Link key={item.title} href={item.link}>
+                        <a className="hover:text-primaryDark md:ml-4 flex hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                          {item.title}
+                          {item.title == "تیکت ها" && (
+                            <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
+                          )}
+                        </a>
+                      </Link>
+                    </>
                   );
                 })}
 

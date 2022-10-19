@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import React from "react";
 import AddSimcart from "../../components/admin/add-simcart";
 import Layout from "../../components/layout/layout";
@@ -6,6 +7,9 @@ import Layout from "../../components/layout/layout";
 const AdminSimcarts: NextPage = () => {
   return (
     <Layout>
+      <Head>
+        <title>اضافه کردن سیمکارت</title>
+      </Head>
       <AddSimcart />
     </Layout>
   );

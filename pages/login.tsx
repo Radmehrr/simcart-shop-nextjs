@@ -1,10 +1,14 @@
 import type { GetServerSideProps, NextPage } from "next";
+import Head from "next/head";
 import Login from "../components/authentication/login";
 import Layout from "../components/layout/layout";
 
 const LoginPage: NextPage = () => {
   return (
     <Layout>
+      <Head>
+        <title>ورود به سیمکارت بازار</title>
+      </Head>
       <Login />
     </Layout>
   );
