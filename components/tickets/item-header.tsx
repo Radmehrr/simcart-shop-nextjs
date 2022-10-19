@@ -24,6 +24,7 @@ const ItemHeader: FC<any> = ({ ticket }) => {
       });
 
       setVisible(false);
+      router.replace("/tickets");
     } catch (e) {
       console.log(e);
     }

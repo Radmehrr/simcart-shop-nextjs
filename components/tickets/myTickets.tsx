@@ -5,6 +5,7 @@ import { FromNow } from "../utils/moment";
 
 const MyTickets: FC<any> = () => {
   const tickets = useAppSelector((state) => state.tickets);
+
   if (tickets.length == 0) {
     return (
       <div className="w-full text-center my-10">

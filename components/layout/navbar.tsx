@@ -41,7 +41,7 @@ export function Navbar() {
   const userNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
     { title: "درباره ما", link: "/about-us" },
-    { title: "ارتباط با ما", link: "/tickets" },
+    { title: "تیکت ها", link: "/tickets" },
   ];
   const adminNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
@@ -87,7 +87,7 @@ export function Navbar() {
                         <a className="hover:text-primaryDark md:ml-4 flex hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
                           {item.title}
                           {item.title == "تیکت ها" &&
-                            adminPendingTicket.data.length > 0 && (
+                            adminPendingTicket?.data?.length > 0 && (
                               <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
                             )}
                         </a>
@@ -113,8 +113,8 @@ export function Navbar() {
                         dark:hover:text-white flex"
                       >
                         {item.title}
-                        {item.title == "ارتباط با ما" &&
-                          userRespondedTicket.data.length > 0 && (
+                        {item.title == "تیکت ها" &&
+                          userRespondedTicket?.data?.length > 0 && (
                             <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
                           )}
                       </a>
@@ -202,7 +202,7 @@ export function Navbar() {
                         <a className="hover:text-primaryDark md:ml-4 flex">
                           {item.title}
                           {item.title == "تیکت ها" &&
-                            adminPendingTicket.data.length > 0 && (
+                            adminPendingTicket?.data?.length > 0 && (
                               <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
                             )}
                         </a>
@@ -222,8 +222,8 @@ export function Navbar() {
                       <Link key={index} href={item.link}>
                         <a className="hover:text-primaryDark md:ml-4 flex">
                           {item.title}
-                          {item.title == "ارتباط با ما" &&
-                            userRespondedTicket.data.length > 0 && (
+                          {item.title == "تیکت ها" &&
+                            userRespondedTicket?.data?.length > 0 && (
                               <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
                             )}
                         </a>

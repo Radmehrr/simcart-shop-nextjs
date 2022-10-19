@@ -6,12 +6,15 @@ import Section from "./section";
 import UploadPhoto from "./upload-photo";
 import Check from "../svg/check";
 import Trash from "../svg/trash";
+import { useRouter } from "next/router";
 
 const Contact = () => {
   const [title, setTitle] = useState("");
   const [sec, setSection] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState("");
+
+  const router = useRouter();
 
   const sendTicket = async (e: any) => {
     e.preventDefault();
@@ -45,6 +48,7 @@ const Contact = () => {
       });
 
       setFile("");
+      router.replace("/tickets");
     } catch (e) {
       toast.error("خطا در داده های ارسالی", {
         position: toast.POSITION.TOP_RIGHT,
