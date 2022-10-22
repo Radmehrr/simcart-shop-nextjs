@@ -17,10 +17,12 @@ const HomeSimcart = () => {
   const [rondType, setRondType] = useState("");
   const [fromPrice, setFromPrice] = useState("");
   const [toPrice, setToPrice] = useState("");
+  const [precode, setPreCode] = useState("");
   const [limit, setLimit] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [simcartsCount, setSimcartsCount] = useState(0);
 
+  console.log(precode);
   useEffect(() => {
     (async () => {
       setLoading(true);
@@ -60,6 +62,9 @@ const HomeSimcart = () => {
         ...(toPrice && {
           toPrice,
         }),
+        ...(precode && {
+          precode,
+        }),
         ...(limit && {
           limit,
         }),
@@ -81,6 +86,7 @@ const HomeSimcart = () => {
           setRondType={setRondType}
           setFromPrice={setFromPrice}
           setToPrice={setToPrice}
+          setPreCode={setPreCode}
           setLimit={setLimit}
           searchButton={searchButton}
         />

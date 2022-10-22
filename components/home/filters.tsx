@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Operators } from "../../constants/operator";
+import { preCodes } from "../../constants/preCodes";
 import { RondType } from "../../constants/rond-type";
 import { SimStatus } from "../../constants/sim-status";
 import { SimType } from "../../constants/sim-type";
@@ -11,6 +12,7 @@ const Filters: FC<any> = ({
   setRondType,
   setFromPrice,
   setToPrice,
+  setPreCode,
   setLimit,
   searchButton,
 }) => {
@@ -18,6 +20,31 @@ const Filters: FC<any> = ({
     <section>
       <div className="ml-2 mr-2 bakhmedium bg-gray-500 rounded-md text-white">
         <div className="flex flex-wrap">
+          {/* precode */}
+          <div className="flex w-full md:basis-1/3 lg:basis-[24.50%]">
+            <label htmlFor="precode" className="text-xl my-3 mx-5">
+              کد:
+            </label>
+
+            <select
+              id="precode"
+              className="bg-gray-50 border border-gray-300 text-md rounded-lg
+           focus:ring-blue-500 focus:border-blue-500 p-1.5 my-2 mx-2
+            dark:bg-gray-700 w-full
+            dark:border-gray-600  
+           dark:placeholder-gray-400 dark:text-white
+            dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-900"
+              onChange={(e) => setPreCode(e.target.value)}
+            >
+              <option value="">فرقی نمیکند</option>
+              {preCodes.map((precode) => (
+                <option key={precode.id} value={precode.title}>
+                  {precode.title}
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* operator */}
           <div className="flex w-full md:basis-1/3 lg:basis-[24.50%]">
             <label htmlFor="operator" className="text-xl my-3 mx-2">
@@ -158,7 +185,7 @@ const Filters: FC<any> = ({
             <select
               className="bg-gray-50 border border-gray-300 text-sm rounded-md 
             focus:ring-blue-500 focus:border-blue-500 mb-2 pt-1
-            w-full mx-4 
+            w-full mx-3
              dark:bg-gray-700 
              dark:border-gray-600 
             dark:placeholder-gray-400 dark:text-white h-10
@@ -175,9 +202,9 @@ const Filters: FC<any> = ({
           </div>
 
           {/* search button */}
-          <div className="flex mx-2 mb-2 md:mt-2 w-full md:basis-1/3 lg:basis-[24.50%]">
+          <div className="flex justify-end mx-2 mb-2 w-full">
             <button
-              className="bg-purple-700 rounded-lg w-full md:w-3/4 md:mr-11 lg:mr-16 dark:bg-gray-700 h-10 hover:bg-white dark:hover:bg-white hover:text-purple-700 hover:border-2 hover:border-purple-700"
+              className="bg-purple-700 rounded-lg w-full md:w-[230px] md:mx-8 lg:mr-16 dark:bg-gray-700 h-10 hover:bg-white dark:hover:bg-white hover:text-purple-700 hover:border-2 hover:border-purple-700"
               onClick={searchButton}
             >
               جستجو

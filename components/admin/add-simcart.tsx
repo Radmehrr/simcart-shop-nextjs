@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { Operators } from "../../constants/operator";
 import { RondType } from "../../constants/rond-type";
 import { SimStatus } from "../../constants/sim-status";
+import { preCodes } from "../../constants/preCodes";
 import { SimType } from "../../constants/sim-type";
 import instance from "../../axios-config";
 
@@ -20,6 +21,7 @@ const AddSimcart = () => {
     type: yup.string().required("وارد کردن نوع سیمکارت الزامی می باشد"),
     rondType: yup.string().required("وارد کردن نوع رند الزامی می باشد"),
     price: yup.string().required("وارد کردن قیمت الزامی می باشد"),
+    precode: yup.string().required("وارد کردن پیش شماره الزامی می باشد"),
   });
 
   const { register, handleSubmit, formState }: any = useForm({
@@ -31,8 +33,13 @@ const AddSimcart = () => {
   const onSubmit = async (data: any) => {
     try {
       const res = await instance.post("/admin/simcart", {
-        ...data,
-        title: "توضیحات نمیدونم هرچی",
+        phoneNumber: data.precode + " " + data.phoneNumber,
+        precode: data.precode,
+        price: data.price,
+        category: data.category,
+        status: data.status,
+        type: data.type,
+        rondType: data.rondType,
       });
 
       toast.success("سیمکارت با موفقیت ثبت شد.", {
@@ -56,6 +63,7 @@ const AddSimcart = () => {
 
         <div className="flex mt-4">
           <div className="w-[32%] flex flex-col space-y-6 md:space-y-6 mt-3 dark:text-gray-900">
+            <p>پیش شماره:</p>
             <p>شماره سیمکارت:</p>
             <p>اپراتور:</p>
             <p>وضعیت:</p>
@@ -69,6 +77,27 @@ const AddSimcart = () => {
               onSubmit={handleSubmit(onSubmit)}
             >
               <div>
+                <select
+                  id="precode"
+                  className="bg-gray-50 border border-gray-300 text-md rounded-lg
+                        focus:ring-blue-500 focus:border-blue-500 p-1.5
+                        dark:bg-gray-700 w-full
+                        dark:border-gray-600  
+                        dark:placeholder-gray-400 dark:text-white
+                        dark:focus:ring-blue-500 dark:focus:border-blue-500 text-gray-900
+                        "
+                  {...register("precode")}
+                >
+                  <option value="">انتخاب کنید</option>
+                  {preCodes.map((precode) => (
+                    <option key={precode.id} value={precode.title}>
+                      {precode.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
                 <input
                   type="text"
                   id="simcartNumber"
@@ -78,6 +107,7 @@ const AddSimcart = () => {
                     dark:bg-gray-700
                     dark:text-white text-left"
                   {...register("phoneNumber")}
+                  placeholder="6666685"
                 />
               </div>
 

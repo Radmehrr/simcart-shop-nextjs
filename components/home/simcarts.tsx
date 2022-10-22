@@ -72,7 +72,10 @@ const Simcarts: FC<any> = ({ simcarts, loading }) => {
                   <td className=" whitespace-nowrap hidden sm:block text-sm font-medium text-gray-900 py-2 dark:text-white">
                     {idx + 1}
                   </td>
-                  <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                  <td
+                    style={{ direction: "ltr" }}
+                    className="whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white"
+                  >
                     {sim.phoneNumber}
                   </td>
                   <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
