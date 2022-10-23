@@ -8,7 +8,10 @@ const Simcart: NextPage = (props: any) => {
   return (
     <Layout>
       <Head>
-        <title>{`سیمکارت ${props.simcart.phoneNumber}`}</title>
+        <title>{`سیمکارت ${props.simcart.phoneNumber.replace(
+          /\s/g,
+          ""
+        )}`}</title>
       </Head>
       <SimItem simcart={props.simcart} />
     </Layout>

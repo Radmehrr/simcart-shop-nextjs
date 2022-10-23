@@ -16,7 +16,10 @@ const AdminOrderItem: NextPage = (props: any) => {
   return (
     <Layout>
       <Head>
-        <title>{`سفارش ${props.order.simcart.phoneNumber}`}</title>
+        <title>{`سفارش ${props.order.simcart.phoneNumber.replace(
+          /\s/g,
+          ""
+        )}`}</title>
       </Head>
       <OrderItem order={props.order} />
     </Layout>

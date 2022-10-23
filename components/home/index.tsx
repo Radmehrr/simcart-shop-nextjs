@@ -22,7 +22,6 @@ const HomeSimcart = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [simcartsCount, setSimcartsCount] = useState(0);
 
-  console.log(precode);
   useEffect(() => {
     (async () => {
       setLoading(true);

@@ -100,6 +100,7 @@ const Simcarts: FC<any> = ({ simcarts, loading }) => {
                       }}
                     >
                       <a
+                        target="_blank"
                         className="py-2 block md:ml-2 md:h-8 text-white bg-green-600 hover:bg-green-700 rounded-lg baseline
                     shadow-lg"
                       >

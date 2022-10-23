@@ -8,7 +8,7 @@ const Order: NextPage = (props: any) => {
   return (
     <Layout>
       <Head>
-        <title>{`سفارش ${props.simcart.phoneNumber}`}</title>
+        <title>{`سفارش ${props.simcart.phoneNumber.replace(/\s/g, "")}`}</title>
       </Head>
       <OrderSim simcart={props.simcart} />
     </Layout>
