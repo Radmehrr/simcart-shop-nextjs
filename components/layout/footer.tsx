@@ -4,13 +4,12 @@ import Calendar from "../svg/calendar";
 import Phone from "../svg/phone";
 
 const Footer = () => {
-  const navbarItems = [
+  const userNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
-    { title: "خدمات", link: "/" },
-    { title: "بلاگ", link: "/" },
-    { title: "درباره ما", link: "/" },
-    { title: "ارتباط با ما", link: "/" },
+    { title: "درباره ما", link: "/about-us" },
+    { title: "تیکت ها", link: "/tickets" },
   ];
+
   return (
     <footer>
       <div className="flex flex-col md:flex-row justify-between	rounded-lg bg-purple-50 mt-2 mr-3 shadow-2xl ml-2 text-center">
@@ -19,7 +18,7 @@ const Footer = () => {
             <li className="text-purple-900 font-bold mb-2 pt-2">
               سیمکارت بازار
             </li>
-            {navbarItems.map((item, index) => (
+            {userNavbarItems.map((item, index) => (
               <li key={index} className="mt-1 text-purple-700">
                 <Link href={item.link}>{item.title}</Link>
               </li>
