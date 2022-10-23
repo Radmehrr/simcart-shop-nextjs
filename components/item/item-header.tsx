@@ -25,7 +25,10 @@ const ItemHeader: FC<any> = ({ phone, category }) => {
             }
           })()}
 
-          <p className="inline-block align-bottom my-auto mx-5 text-xl dark:text-black">
+          <p
+            className="inline-block align-bottom my-auto mx-5 text-xl dark:text-black"
+            style={{ direction: "ltr" }}
+          >
             <span>{phone}</span>
           </p>
         </div>

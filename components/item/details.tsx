@@ -7,7 +7,7 @@ const Details: FC<any> = ({ simcart }) => {
       <div className="mx-3 my-5">
         <div className="flex gap-20 mx-2 md:gap-40 dark:text-gray-700">
           <p>شماره: </p>
-          <p>{simcart.phoneNumber}</p>
+          <p style={{ direction: "ltr" }}>{simcart.phoneNumber}</p>
         </div>
 
         <div className="flex gap-20 mx-2 my-2 md:my-4 md:gap-40 dark:text-gray-700">

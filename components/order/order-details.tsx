@@ -36,9 +36,11 @@ const OrderDetails: FC<any> = ({ simcart }) => {
             }
           })()}
 
-          <p className="inline-block align-bottom my-auto mr-2 md:mx-20 dark:text-black">
+          <p className="align-bottom my-auto mr-2 md:mx-20 dark:text-black flex">
             <span className="ml-1">شماره: </span>
-            <span className="font-bold text-sm">{simcart.phoneNumber}</span>
+            <p style={{ direction: "ltr" }}>
+              <span className="font-bold text-sm">{simcart.phoneNumber}</span>
+            </p>
           </p>
 
           <div className="flex items-center mx-2 my-2 gap-1 dark:text-gray-700">
