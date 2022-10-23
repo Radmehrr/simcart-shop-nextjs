@@ -55,6 +55,7 @@ export function Navbar() {
     Cookies.remove("accessToken");
     dispatch(appActions.logout);
     router.push("/");
+    router.reload();
   };
 
   return (
