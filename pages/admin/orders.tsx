@@ -1,17 +1,26 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect } from "react";
-import instance from "../../axios-config";
+import useSWR from "swr";
+import instance, { SWRfetcher } from "../../axios-config";
 import Orders from "../../components/admin/orders";
 import { useAppDispatch } from "../../components/hooks/hook";
 import Layout from "../../components/layout/layout";
+import Loading from "../../components/loading";
 import { appActions } from "../../stores/appSlice";
 
 const AdminOrders: NextPage = (props: any) => {
+  const { data, error } = useSWR("/admin/order", SWRfetcher);
+  if (error) return <div>failed to load</div>;
+  if (!data)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(appActions.addOrders(props.orders));
-  }, []);
+
+  dispatch(appActions.addOrders(data.data));
 
   return (
     <Layout>
@@ -33,15 +42,15 @@ export async function getServerSideProps(context: any) {
       },
     };
   }
-  const res = await instance.get("/admin/order", {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-  const orders = res.data;
+  // const res = await instance.get("/admin/order", {
+  //   headers: {
+  //     Authorization: `Bearer ${accessToken}`,
+  //   },
+  // });
+  // const orders = res.data;
 
   return {
-    props: { orders },
+    props: {},
   };
 }
 

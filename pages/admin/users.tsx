@@ -1,17 +1,26 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import { useEffect } from "react";
-import instance from "../../axios-config";
+import useSWR from "swr";
+import { SWRfetcher } from "../../axios-config";
 import Users from "../../components/admin/users";
 import { useAppDispatch } from "../../components/hooks/hook";
 import Layout from "../../components/layout/layout";
+import Loading from "../../components/loading";
 import { appActions } from "../../stores/appSlice";
 
 const AdminUsers: NextPage = (props: any) => {
+  const { data, error } = useSWR("/admin/users", SWRfetcher);
+  if (error) return <div>failed to load</div>;
+  if (!data)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(appActions.addUsers(props.users));
-  }, []);
+
+  dispatch(appActions.addUsers(data.data));
 
   return (
     <Layout>
@@ -33,14 +42,9 @@ export async function getServerSideProps(context: any) {
       },
     };
   }
-  const res = await instance.get("/admin/users", {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-  const users = res.data;
+
   return {
-    props: { users },
+    props: {},
   };
 }
 

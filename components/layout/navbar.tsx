@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import ThemeChanger from "../themeChanger";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,12 +29,12 @@ export function Navbar() {
   const user: any = useAppSelector((state) => state.user);
 
   const { data: adminPendingTicket, error: adminTicketError } = useSWR<any>(
-    "/admin/ticket?status=در حال بررسی",
+    user.role == "admin" ? "/admin/ticket?status=در حال بررسی" : null,
     SWRfetcher
   );
 
   const { data: userRespondedTicket, error: userTicketError } = useSWR<any>(
-    "/user/ticket?status=پاسخ داده",
+    user.role == "client" ? "/user/ticket?status=پاسخ داده" : null,
     SWRfetcher
   );
 
@@ -69,11 +69,6 @@ export function Navbar() {
                 width={60}
                 height={65}
               />
-              {/* <Image
-            src="/img/logos/SimcartBazarVertical.png"
-            width={100}
-            height={50}
-          /> */}
             </a>
           </Link>
         </div>
@@ -83,8 +78,8 @@ export function Navbar() {
               <div className="hidden md:flex space-x-8 bakhMedium">
                 {adminNavbarItems.map((item: any) => {
                   return (
-                    <>
-                      <Link key={item.title} href={item.link}>
+                    <Fragment key={item.title}>
+                      <Link href={item.link}>
                         <a className="hover:text-primaryDark md:ml-4 flex hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
                           {item.title}
                           {item.title == "تیکت ها" &&
@@ -93,7 +88,7 @@ export function Navbar() {
                             )}
                         </a>
                       </Link>
-                    </>
+                    </Fragment>
                   );
                 })}
 

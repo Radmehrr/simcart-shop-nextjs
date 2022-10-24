@@ -1,17 +1,26 @@
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { useEffect } from "react";
-import instance from "../../axios-config";
+import useSWR from "swr";
+import { SWRfetcher } from "../../axios-config";
 import { useAppDispatch } from "../../components/hooks/hook";
 import Layout from "../../components/layout/layout";
+import Loading from "../../components/loading";
 import Tickets from "../../components/tickets";
 import { appActions } from "../../stores/appSlice";
 
 const TicketsPage: NextPage = (props: any) => {
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(appActions.addTickets(props.tickets));
-  }, []);
+  const { data, error } = useSWR("/user/ticket", SWRfetcher);
+  if (error) return <div>failed to load</div>;
+  if (!data)
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+
+  dispatch(appActions.addTickets(data.data));
 
   return (
     <Layout>
@@ -34,15 +43,8 @@ export async function getServerSideProps(context: any) {
       },
     };
   } else {
-    const res = await instance.get("/user/ticket", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    const tickets = res.data;
-
     return {
-      props: { tickets },
+      props: {},
     };
   }
 }

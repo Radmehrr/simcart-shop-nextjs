@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import useSWR from "swr";
-import instance, { SWRfetcher } from "../axios-config";
+import { SWRfetcher } from "../axios-config";
 import Layout from "../components/layout/layout";
 import Loading from "../components/loading";
 import OrderSim from "../components/order";
@@ -12,6 +12,7 @@ const Order: NextPage = (props: any) => {
   if (!data) return <Loading />;
   const title = data?.data.simcarts[0].phoneNumber;
   const simcart = data?.data.simcarts[0];
+
   return (
     <Layout>
       <Head>
@@ -31,6 +32,7 @@ export async function getServerSideProps(context: any) {
   //   },
   // });
   // const simcart = res.data.simcarts[0];
+
   return {
     props: { id },
   };

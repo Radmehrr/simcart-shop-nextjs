@@ -15,7 +15,7 @@ const MyTickets: FC<any> = () => {
   }
   return (
     <div className="w-full">
-      <div className="mx-2">
+      <div>
         <table className="table-auto min-w-full mt-2">
           <thead className="bg-gray-100 border-b">
             <tr className="text-gray-700">
