@@ -1,8 +1,9 @@
 import Link from "next/link";
-import Fade from "react-reveal/Fade";
+// import Fade from "react-reveal/Fade";
 import { FC } from "react";
 import Plus from "../svg/plus";
 import MyTickets from "./myTickets";
+const Fade = require("react-reveal/Fade");
 
 const Tickets: FC<any> = () => {
   return (

@@ -13,6 +13,7 @@ const ShowUserUploadedPhotos: FC<any> = ({ photos }) => {
             <Image
               src={`${process.env.NEXT_PUBLIC_SIMCARTBAZAR_URL}/public/get-photos/${photo}`}
               layout="fill"
+              alt="image"
             />
           </div>
         ))}

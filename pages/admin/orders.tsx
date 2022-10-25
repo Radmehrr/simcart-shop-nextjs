@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { useEffect } from "react";
 import useSWR from "swr";
 import instance, { SWRfetcher } from "../../axios-config";
 import Orders from "../../components/admin/orders";
@@ -10,6 +9,7 @@ import Loading from "../../components/loading";
 import { appActions } from "../../stores/appSlice";
 
 const AdminOrders: NextPage = (props: any) => {
+  const dispatch = useAppDispatch();
   const { data, error } = useSWR("/admin/order", SWRfetcher);
   if (error) return <div>failed to load</div>;
   if (!data)
@@ -18,7 +18,6 @@ const AdminOrders: NextPage = (props: any) => {
         <Loading />
       </div>
     );
-  const dispatch = useAppDispatch();
 
   dispatch(appActions.addOrders(data.data));
 

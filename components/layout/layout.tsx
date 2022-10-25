@@ -1,10 +1,11 @@
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import Slide from "react-reveal/Slide";
+// import Slide from "react-reveal/Slide";
 import { appActions } from "../../stores/appSlice";
 import { useAppDispatch } from "../hooks/hook";
 import Footer from "./footer";
 import { Navbar } from "./navbar";
+const Slide = require("react-reveal/Fade");
 
 const Layout = ({ children }: any) => {
   const dispatch = useAppDispatch();

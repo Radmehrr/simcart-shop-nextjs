@@ -14,14 +14,33 @@ const ItemHeader: FC<any> = ({ phone, category }) => {
             switch (category) {
               case "همراه اول":
                 return (
-                  <Image src="/img/hamrah_aval.png" width={70} height={70} />
+                  <Image
+                    src="/img/hamrah_aval.png"
+                    width={70}
+                    height={70}
+                    alt="hamrah_aval"
+                  />
                 );
 
               case "ایرانسل":
-                return <Image src="/img/irancell.png" width={70} height={70} />;
+                return (
+                  <Image
+                    src="/img/irancell.png"
+                    width={70}
+                    height={70}
+                    alt="irancell"
+                  />
+                );
 
               case "رایتل":
-                return <Image src="/img/rightel.png" width={90} height={80} />;
+                return (
+                  <Image
+                    src="/img/rightel.png"
+                    width={90}
+                    height={80}
+                    alt="rightel"
+                  />
+                );
             }
           })()}
 

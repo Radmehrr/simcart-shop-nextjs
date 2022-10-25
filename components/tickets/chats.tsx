@@ -54,6 +54,7 @@ const Chats: FC<any> = () => {
                       width={40}
                       height={45}
                       className="rounded-full"
+                      alt="person"
                     />
                   </div>
                   <div className="mr-1 md:mx-4">

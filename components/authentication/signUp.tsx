@@ -42,6 +42,7 @@ const SignUp = () => {
             src="/img/logos/SimcartBazarOnlyElementLogo.png"
             width={40}
             height={45}
+            alt="image"
           />
           <p className="text-primary font-extrabold selection:bg-purple-500 selection:text-white">
             ثبت نام در سیم کارت بازار

@@ -10,6 +10,8 @@ import Loading from "../../components/loading";
 import { appActions } from "../../stores/appSlice";
 
 const AdminTickets: NextPage = (props: any) => {
+  const dispatch = useAppDispatch();
+
   const { data, error } = useSWR("/admin/ticket", SWRfetcher);
   if (error) return <div>failed to load</div>;
   if (!data)
@@ -18,7 +20,6 @@ const AdminTickets: NextPage = (props: any) => {
         <Loading />
       </div>
     );
-  const dispatch = useAppDispatch();
 
   dispatch(appActions.addAdminTickets(data.data));
 

@@ -9,8 +9,6 @@ const AdminChat = () => {
   const [visible, setVisible] = useState(false);
   const messages = useAppSelector((state) => state.messages);
 
-  console.log(messages);
-
   return (
     <section>
       <div>
@@ -26,6 +24,7 @@ const AdminChat = () => {
                         width={40}
                         height={45}
                         className="rounded-full"
+                        alt="person"
                       />
                     </div>
                     <div className="mr-1 md:mx-4">

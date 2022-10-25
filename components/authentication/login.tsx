@@ -59,6 +59,7 @@ const Login = () => {
             src="/img/logos/SimcartBazarOnlyElementLogo.png"
             width={40}
             height={45}
+            alt="image"
           />
           <p className="text-primary font-extrabold pt-2 selection:bg-purple-500 selection:text-white">
             ورود به حساب کاربری

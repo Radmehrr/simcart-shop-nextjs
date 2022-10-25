@@ -16,21 +16,36 @@ const OrderDetails: FC<any> = ({ simcart }) => {
               case "همراه اول":
                 return (
                   <div>
-                    <Image src="/img/hamrah_aval.png" width={70} height={70} />
+                    <Image
+                      src="/img/hamrah_aval.png"
+                      width={70}
+                      height={70}
+                      alt="hamrah_aval"
+                    />
                   </div>
                 );
 
               case "ایرانسل":
                 return (
                   <div>
-                    <Image src="/img/irancell.png" width={70} height={70} />
+                    <Image
+                      src="/img/irancell.png"
+                      width={70}
+                      height={70}
+                      alt="irancell"
+                    />
                   </div>
                 );
 
               case "رایتل":
                 return (
                   <div>
-                    <Image src="/img/rightel.png" width={90} height={80} />
+                    <Image
+                      src="/img/rightel.png"
+                      width={90}
+                      height={80}
+                      alt="rightel"
+                    />
                   </div>
                 );
             }

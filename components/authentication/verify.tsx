@@ -38,6 +38,7 @@ const Verify = ({ phoneNumber }: any) => {
             src="/img/logos/SimcartBazarOnlyElementLogo.png"
             width={40}
             height={45}
+            alt="image"
           />
           <p className="text-transparent font-extrabold pt-2 bg-clip-text bg-gradient-to-l from-purple-800 to-red-700 selection:bg-purple-500 selection:text-white">
             اعتبار سنجی شماره تلفن

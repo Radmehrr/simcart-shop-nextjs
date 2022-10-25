@@ -68,6 +68,7 @@ export function Navbar() {
                 src="/img/logos/HorizontalSimcartBazarLogo.png"
                 width={60}
                 height={65}
+                alt="image"
               />
             </a>
           </Link>
