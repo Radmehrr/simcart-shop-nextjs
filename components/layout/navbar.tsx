@@ -50,7 +50,7 @@ export function Navbar() {
     { title: "سفارشات", link: "/admin/orders" },
     { title: "تیکت ها", link: "/admin/tickets" },
   ];
-
+  console.log(user);
   const exit = () => {
     Cookies.remove("accessToken");
     dispatch(appActions.logout);
@@ -213,7 +213,7 @@ export function Navbar() {
               );
             } else {
               return (
-                <>
+                <Fragment>
                   {userNavbarItems.map((item: any, index) => {
                     return (
                       <Link key={index} href={item.link}>
@@ -227,10 +227,18 @@ export function Navbar() {
                       </Link>
                     );
                   })}
+
+                  {login && (
+                    <Link href="/my-orders">
+                      <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                        سفارشات
+                      </a>
+                    </Link>
+                  )}
                   <div>
                     <ThemeChanger />
                   </div>
-                </>
+                </Fragment>
               );
             }
           })()}
