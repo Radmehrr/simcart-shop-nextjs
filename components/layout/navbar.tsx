@@ -50,7 +50,7 @@ export function Navbar() {
     { title: "سفارشات", link: "/admin/orders" },
     { title: "تیکت ها", link: "/admin/tickets" },
   ];
-  console.log(user);
+
   const exit = () => {
     Cookies.remove("accessToken");
     dispatch(appActions.logout);
