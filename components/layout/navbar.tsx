@@ -137,7 +137,7 @@ export function Navbar() {
         {login ? (
           <div className="text-purple-700 font-bold">
             <button
-              className="p-2 px-6 text-white bg-primary rounded-lg baseline md:block
+              className="p-2 px-6 text-white bg-test2 rounded-lg baseline md:block
                     shadow-lg
                   dark:hover:text-white dark:hover:border-purple-400
                     hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"
@@ -153,7 +153,7 @@ export function Navbar() {
               router.pathname !== "/verify" && (
                 <Link href="/login">
                   <a
-                    className="p-2 px-6 text-white bg-primary rounded-lg baseline md:block
+                    className="p-2 px-6 text-white bg-test2 rounded-lg baseline md:block
                     shadow-lg
                   dark:hover:text-white dark:hover:border-purple-400
                     hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"

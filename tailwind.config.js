@@ -19,6 +19,13 @@ module.exports = {
         primary: "rgb(147 51 234)",
         primaryLight: "rgb(192 132 252)",
         primaryDark: "rgb(107 33 168)",
+        lightGreen: "rgb(165 255 214)",
+        lightYellow: "rgb(255 243 176)",
+        lightGolbehi: "rgb(255 229 217)",
+        golbehi: "rgb(255 205 178)",
+        test: "rgb(203 243 240)",
+        test1: "rgb(239 35 60)",
+        test2: "rgb(108 117 125)"
       },
     },
   },

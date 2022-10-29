@@ -16,10 +16,10 @@ const Simcarts: FC<any> = ({ simcarts, loading }) => {
 
   return (
     <section>
-      <div className="w-full">
+      <div className="max-w-3xl md:mx-auto">
         <div className="mx-2">
           <table className="table-auto min-w-full mt-2">
-            <thead className="bg-purple-500 border-b">
+            <thead className="bg-test2 border-b">
               <tr className="text-white">
                 <th
                   scope="col"
@@ -101,7 +101,7 @@ const Simcarts: FC<any> = ({ simcarts, loading }) => {
                     >
                       <a
                         target="_blank"
-                        className="py-2 block md:ml-2 md:h-8 text-white bg-green-600 hover:bg-green-700 rounded-lg baseline
+                        className="py-2 block md:ml-2 md:h-8 text-white bg-green-400 hover:bg-green-700 rounded-lg baseline
                     shadow-lg"
                       >
                         خرید

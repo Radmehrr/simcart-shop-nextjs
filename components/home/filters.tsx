@@ -18,17 +18,17 @@ const Filters: FC<any> = ({
 }) => {
   return (
     <section>
-      <div className="ml-2 mr-2 bakhmedium bg-gray-500 rounded-md text-white">
+      <div className="max-w-3xl md:mx-auto shadow-2xl bakhmedium bg-test1 rounded-md text-white bakhMedium">
         <div className="flex flex-wrap">
           {/* precode */}
-          <div className="flex w-full md:basis-1/3 lg:basis-[24.50%]">
-            <label htmlFor="precode" className="text-xl my-3 mx-5">
+          <div className="flex w-full md:basis-1/3">
+            <label htmlFor="precode" className="text-md my-3 mx-3 w-1/3">
               کد:
             </label>
 
             <select
               id="precode"
-              className="bg-gray-50 border border-gray-300 text-md rounded-lg
+              className=" border border-gray-300 text-sm rounded-lg
            focus:ring-blue-500 focus:border-blue-500 p-1.5 my-2 mx-2
             dark:bg-gray-700 w-full
             dark:border-gray-600  
@@ -46,14 +46,14 @@ const Filters: FC<any> = ({
           </div>
 
           {/* operator */}
-          <div className="flex w-full md:basis-1/3 lg:basis-[24.50%]">
-            <label htmlFor="operator" className="text-xl my-3 mx-2">
+          <div className="flex w-full md:basis-1/3">
+            <label htmlFor="operator" className="text-md my-3 mx-3 w-1/3">
               اپراتور:
             </label>
 
             <select
               id="operator"
-              className="bg-gray-50 border border-gray-300 text-md rounded-lg
+              className="bg-gray-50 border border-gray-300 text-sm rounded-lg
            focus:ring-blue-500 focus:border-blue-500 p-1.5 my-2 mx-2
             dark:bg-gray-700 w-full
             dark:border-gray-600  
@@ -71,14 +71,14 @@ const Filters: FC<any> = ({
           </div>
 
           {/* sim type */}
-          <div className="flex w-full md:basis-1/3 lg:basis-[24.50%]">
-            <label htmlFor="simType" className="text-xl my-3 mx-4 md:mx-2">
+          <div className="flex w-full md:basis-1/3">
+            <label htmlFor="simType" className="text-md my-3 mx-3 w-1/3">
               نوع:
             </label>
 
             <select
               id="simType"
-              className="bg-gray-50 border border-gray-300 text-md rounded-lg
+              className="bg-gray-50 border border-gray-300 text-sm rounded-lg
            focus:ring-blue-500 focus:border-blue-500 p-1.5 my-2 mx-2
             dark:bg-gray-700 w-full
             dark:border-gray-600  
@@ -96,15 +96,18 @@ const Filters: FC<any> = ({
           </div>
 
           {/* sim status */}
-          <div className="flex w-full md:basis-1/3 lg:basis-[24.50%]">
-            <label htmlFor="status" className="text-xl my-3 mr-2">
+          <div className="flex w-full md:basis-1/3">
+            <label
+              htmlFor="status"
+              className="text-md mt-4 mr-2 ml-3 md:ml-1 w-1/3"
+            >
               وضعیت:
             </label>
 
             <select
               id="status"
-              className="bg-gray-50 border border-gray-300 text-md rounded-lg
-           focus:ring-blue-500 focus:border-blue-500 p-1.5 my-2 mx-2
+              className="bg-gray-50 border border-gray-300 text-sm rounded-lg
+           focus:ring-blue-500 focus:border-blue-500 p-1.5 my-3 mx-2
             dark:bg-gray-700 w-full
             dark:border-gray-600  
            dark:placeholder-gray-400 dark:text-white
@@ -121,15 +124,18 @@ const Filters: FC<any> = ({
           </div>
 
           {/* sim rondType */}
-          <div className="flex w-full md:basis-1/3 lg:basis-[24.50%]">
-            <label htmlFor="rondType" className="text-xl my-3 mr-2 flex">
+          <div className="flex w-full md:basis-1/3">
+            <label
+              htmlFor="rondType"
+              className="text-md mt-4 mr-2 ml-3 flex w-1/3"
+            >
               <p className="ml-1"> رند</p> <p>نوع:</p>
             </label>
 
             <select
               id="rondType"
-              className="bg-gray-50 border border-gray-300 text-md rounded-lg
-           focus:ring-blue-500 focus:border-blue-500 p-1.5 my-2 mx-2
+              className="bg-gray-50 border border-gray-300 text-sm rounded-lg
+           focus:ring-blue-500 focus:border-blue-500 p-1.5 my-3 mx-2
             dark:bg-gray-700 w-full
             dark:border-gray-600  
            dark:placeholder-gray-400 dark:text-white
@@ -145,47 +151,13 @@ const Filters: FC<any> = ({
             </select>
           </div>
 
-          {/* price From*/}
-          <div className="flex w-full my-2 md:basis-1/3 lg:basis-[24.50%]">
-            <label htmlFor="from" className="text-xl mt-1 mr-2 flex">
-              <p>قیمت</p>
-              <p>از </p> <p>:</p>
-            </label>
-            <input
-              id="from"
-              type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 
-                focus:ring-blue-500 focus:border-blue-500 w-full mx-2 md:h-10
-                 dark:bg-gray-700 dark:text-white text-center"
-              placeholder="به تومان"
-              onChange={(e) => setFromPrice(e.target.value)}
-            />
-          </div>
-
-          {/* price To */}
-          <div className="flex w-full my-2 md:basis-1/3 lg:basis-[24.50%]">
-            <label htmlFor="from" className="text-xl mt-2 mr-2 flex">
-              <p>تا</p>
-              <p>:</p>
-            </label>
-            <input
-              id="from"
-              type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 
-                focus:ring-blue-500 focus:border-blue-500
-                ml-2 mr-10 w-full md:h-10
-                 dark:bg-gray-700 dark:text-white text-center"
-              placeholder="به تومان"
-              onChange={(e) => setToPrice(e.target.value)}
-            />
-          </div>
-
-          <div className="flex w-full my-2 md:basis-1/3 lg:basis-[24.50%]">
-            <label className="text-xl mt-2 mr-2 md:ml-3">تعداد: </label>
+          {/* تعداد */}
+          <div className="flex w-full my-2 md:basis-1/3 ">
+            <label className="text-md mt-2 mr-2 ml-3 w-1/3">تعداد: </label>
             <select
               className="bg-gray-50 border border-gray-300 text-sm rounded-md 
             focus:ring-blue-500 focus:border-blue-500 mb-2 pt-1
-            w-full mx-3
+            w-full mx-2
              dark:bg-gray-700 
              dark:border-gray-600 
             dark:placeholder-gray-400 dark:text-white h-10
@@ -201,10 +173,49 @@ const Filters: FC<any> = ({
             </select>
           </div>
 
+          {/* price From*/}
+          <div className="flex w-full my-2 md:basis-1/3">
+            <label htmlFor="from" className="text-md mt-2 mr-2 ml-3 flex w-1/3">
+              <p>قیمت</p>
+              <p>از </p> <p>:</p>
+            </label>
+            <input
+              id="from"
+              type="text"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 
+                focus:ring-blue-500 focus:border-blue-500 w-full mx-2 md:h-10
+                 dark:bg-gray-700 dark:text-white text-center"
+              placeholder="به تومان"
+              onChange={(e) => setFromPrice(e.target.value)}
+            />
+          </div>
+
+          {/* price To */}
+          <div className="flex w-full my-2 md:basis-1/3">
+            <label
+              htmlFor="from"
+              className="text-md mt-2 mr-2 ml-3 flex w-1/3 md:w-[95px]"
+            >
+              <p>قیمت تا</p>
+              <p>:</p>
+            </label>
+            <input
+              id="from"
+              type="text"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 
+              focus:ring-blue-500 focus:border-blue-500 w-full md:h-10 mx-2 md:mx-0
+              dark:bg-gray-700 dark:text-white text-center"
+              placeholder="به تومان"
+              onChange={(e) => setToPrice(e.target.value)}
+            />
+          </div>
+
           {/* search button */}
-          <div className="flex justify-end mx-2 mb-2 w-full">
+          <div className="md:w-1/3 w-full text-left mx-2 md:mx-0">
             <button
-              className="bg-purple-700 rounded-lg w-full md:w-[230px] md:mx-8 lg:mr-16 dark:bg-gray-700 h-10 hover:bg-white dark:hover:bg-white hover:text-purple-700 hover:border-2 hover:border-purple-700"
+              className="bg-test2 rounded-lg md:w-2/3 ml-2 w-full mt-2
+              dark:bg-gray-700 h-10 hover:bg-white dark:hover:bg-white
+              hover:text-purple-700 hover:border-2 hover:border-purple-700  my-2"
               onClick={searchButton}
             >
               جستجو
@@ -217,4 +228,3 @@ const Filters: FC<any> = ({
 };
 
 export default Filters;
-// for new commt
