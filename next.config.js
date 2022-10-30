@@ -10,6 +10,7 @@ const withPWA = require("next-pwa")({
 const nextConfig = withPWA({
   reactStrictMode: true,
   swcMinify: true,
+  output: "standalone",
   images: {
     domains: ["simcart.iran.liara.run"],
   },
