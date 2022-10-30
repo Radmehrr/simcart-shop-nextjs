@@ -12,6 +12,7 @@ type stateType = {
   order: {};
   adminAllTickets: [];
   adminTicketItem: [];
+  mySimcarts: [];
 };
 
 const initialState: stateType = {
@@ -26,6 +27,7 @@ const initialState: stateType = {
   order: {},
   adminAllTickets: [],
   adminTicketItem: [],
+  mySimcarts: [],
 };
 
 export const appReducer = createSlice({
@@ -73,6 +75,9 @@ export const appReducer = createSlice({
     },
     addAdminTicketItem: (state, action) => {
       state.adminTicketItem = action.payload;
+    },
+    addMySimcarts: (state, action) => {
+      state.mySimcarts = action.payload;
     },
   },
 });

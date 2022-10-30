@@ -120,11 +120,19 @@ export function Navbar() {
                 })}
 
                 {login && (
-                  <Link href="/my-orders">
-                    <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                      سفارشات
-                    </a>
-                  </Link>
+                  <Fragment>
+                    <Link href="/my-simcarts">
+                      <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                        سیمکارت های من
+                      </a>
+                    </Link>
+
+                    <Link href="/my-orders">
+                      <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                        سفارشات
+                      </a>
+                    </Link>
+                  </Fragment>
                 )}
                 <div>
                   <ThemeChanger />
@@ -229,11 +237,19 @@ export function Navbar() {
                   })}
 
                   {login && (
-                    <Link href="/my-orders">
-                      <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                        سفارشات
-                      </a>
-                    </Link>
+                    <Fragment>
+                      <Link href="/my-simcarts">
+                        <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                          سیمکارت های من
+                        </a>
+                      </Link>
+
+                      <Link href="/my-orders">
+                        <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                          سفارشات
+                        </a>
+                      </Link>
+                    </Fragment>
                   )}
                   <div>
                     <ThemeChanger />
