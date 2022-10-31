@@ -41,12 +41,6 @@ export async function getServerSideProps(context: any) {
       },
     };
   }
-  // const res = await instance.get("/admin/order", {
-  //   headers: {
-  //     Authorization: `Bearer ${accessToken}`,
-  //   },
-  // });
-  // const orders = res.data;
 
   return {
     props: {},

@@ -24,8 +24,7 @@ module.exports = {
         lightGolbehi: "rgb(255 229 217)",
         golbehi: "rgb(255 205 178)",
         test: "rgb(203 243 240)",
-        test1: "rgb(239 35 60)",
-        test2: "rgb(108 117 125)"
+        test2: "rgb(108 117 125)",
       },
     },
   },

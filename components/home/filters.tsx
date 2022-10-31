@@ -18,7 +18,7 @@ const Filters: FC<any> = ({
 }) => {
   return (
     <section>
-      <div className="max-w-3xl md:mx-auto shadow-2xl bakhmedium bg-test1 rounded-md text-white bakhMedium">
+      <div className="max-w-3xl md:mx-auto shadow-2xl bakhmedium bg-gray-700 rounded-md text-white bakhMedium">
         <div className="flex flex-wrap">
           {/* precode */}
           <div className="flex w-full md:basis-1/3">

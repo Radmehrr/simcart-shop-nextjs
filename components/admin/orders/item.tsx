@@ -1,8 +1,10 @@
 import numeral from "numeral";
 import { FC } from "react";
+import { useAppSelector } from "../../hooks/hook";
 import { getDate } from "../../utils/moment";
 
-const OrderItem: FC<any> = ({ order }) => {
+const OrderItem: FC<any> = () => {
+  const order: any = useAppSelector((state) => state.order);
   const date = getDate(order.createdAt);
 
   return (
@@ -64,13 +66,13 @@ const OrderItem: FC<any> = ({ order }) => {
 
           <div className="flex justify-between my-2">
             <p>شماره خریدار:</p>
-            <p>{order.phone}</p>
+            <p style={{ direction: "ltr" }}>{order.phone}</p>
           </div>
 
           <p className="mt-6">اطلاعات سیمکارت:</p>
           <div className="flex justify-between my-2">
             <p>شماره سیمکارت:</p>
-            <p>{order.simcart.phoneNumber}</p>
+            <p style={{ direction: "ltr" }}>{order.simcart.phoneNumber}</p>
           </div>
 
           <div className="flex justify-between my-2">
@@ -96,6 +98,17 @@ const OrderItem: FC<any> = ({ order }) => {
             <p className="text-green-600">
               {numeral(order.simcart.price).format("000,000")}
             </p>
+          </div>
+
+          <p className="mt-6">اطلاعات فروشنده:</p>
+          <div className="flex justify-between my-2">
+            <p>نام فروشنده:</p>
+            <p>{order.seller.fullName}</p>
+          </div>
+
+          <div className="flex justify-between my-2">
+            <p>شماره فروشنده:</p>
+            <p style={{ direction: "ltr" }}>{order.seller.phone}</p>
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { IranProvince } from "../../constants/province";
@@ -23,6 +25,9 @@ const Address: FC<any> = ({ simId }) => {
         simcartId: simId,
         address: data,
       });
+      toast.success("سفارش ثبت شد.", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -31,6 +36,7 @@ const Address: FC<any> = ({ simId }) => {
 
   return (
     <section>
+      <ToastContainer />
       <div className="bakhMedium my-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex">

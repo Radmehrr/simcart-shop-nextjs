@@ -1,6 +1,7 @@
 import { FC } from "react";
 import numeral from "numeral";
 import { useAppSelector } from "../hooks/hook";
+import RedTrash from "../svg/red-trash";
 
 const Simcarts: FC<any> = () => {
   const simcarts = useAppSelector((state) => state.mySimcarts);
@@ -60,6 +61,10 @@ const Simcarts: FC<any> = () => {
               >
                 نوع رند
               </th>
+              <th
+                scope="col"
+                className="text-sm font-medium text-white min-w-full text-center"
+              ></th>
             </tr>
           </thead>
           <tbody>
@@ -91,6 +96,12 @@ const Simcarts: FC<any> = () => {
                 </td>
                 <td className=" whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                   {sim.rondType}
+                </td>
+
+                <td className="whitespace-nowrap text-sm font-medium dark:text-white">
+                  <button>
+                    <RedTrash />
+                  </button>
                 </td>
               </tr>
             ))}

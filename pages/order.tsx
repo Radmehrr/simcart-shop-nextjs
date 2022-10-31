@@ -9,6 +9,7 @@ import OrderSim from "../components/order";
 const Order: NextPage = (props: any) => {
   const id = props.id;
   const { data, error } = useSWR(`/user/simcart?simcartId=${id}`, SWRfetcher);
+  if (error) return <div>Failed to load!</div>;
   if (!data) return <Loading />;
   const title = data?.data.simcarts[0].phoneNumber;
   const simcart = data?.data.simcarts[0];
@@ -24,14 +25,17 @@ const Order: NextPage = (props: any) => {
 };
 
 export async function getServerSideProps(context: any) {
-  const id = context.query.id;
+  const accessToken = context.req.cookies["accessToken"];
+  if (!accessToken) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
-  // const res = await instance.get("/user/simcart", {
-  //   params: {
-  //     simcartId: id,
-  //   },
-  // });
-  // const simcart = res.data.simcarts[0];
+  const id = context.query.id;
 
   return {
     props: { id },
