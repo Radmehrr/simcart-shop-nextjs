@@ -12,7 +12,7 @@ type stateType = {
   order: {};
   adminAllTickets: [];
   adminTicketItem: [];
-  mySimcarts: [];
+  mySimcarts: any[];
 };
 
 const initialState: stateType = {
