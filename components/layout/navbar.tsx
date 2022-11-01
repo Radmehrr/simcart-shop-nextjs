@@ -81,7 +81,17 @@ export function Navbar() {
                   return (
                     <Fragment key={item.title}>
                       <Link href={item.link}>
-                        <a className="hover:text-primaryDark md:ml-4 flex hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
+                        <a
+                          className={`
+                          ${
+                            router.pathname == item.link
+                              ? "text-primaryDark border-b-2 border-primaryDark"
+                              : ""
+                          }
+                        hover:text-primaryDark md:ml-4 flex hover:border-b-2
+                          hover:transition-all hover:animate-bounce hover:border-purple-500
+                        dark:hover:text-white`}
+                        >
                           {item.title}
                           {item.title == "تیکت ها" &&
                             adminPendingTicket?.data?.length > 0 && (
@@ -105,9 +115,15 @@ export function Navbar() {
                   return (
                     <Link key={item.title} href={item.link}>
                       <a
-                        className="hover:text-primaryDark md:ml-4 hover:border-b-2
+                        className={`
+                        ${
+                          router.pathname == item.link
+                            ? "text-primaryDark border-b-2 border-primaryDark"
+                            : ""
+                        }
+                        hover:text-primaryDark md:ml-4 hover:border-b-2
                        hover:transition-all hover:animate-bounce hover:border-purple-500
-                        dark:hover:text-white flex"
+                        dark:hover:text-white flex`}
                       >
                         {item.title}
                         {item.title == "تیکت ها" &&
@@ -204,7 +220,15 @@ export function Navbar() {
                   {adminNavbarItems.map((item: any, index) => {
                     return (
                       <Link key={index} href={item.link}>
-                        <a className="hover:text-primaryDark md:ml-4 flex">
+                        <a
+                          className={`
+                         ${
+                           router.pathname == item.link
+                             ? "text-primaryDark border-b-2 border-primaryDark"
+                             : ""
+                         }
+                        hover:text-primaryDark md:ml-4 flex`}
+                        >
                           {item.title}
                           {item.title == "تیکت ها" &&
                             adminPendingTicket?.data?.length > 0 && (
@@ -225,7 +249,15 @@ export function Navbar() {
                   {userNavbarItems.map((item: any, index) => {
                     return (
                       <Link key={index} href={item.link}>
-                        <a className="hover:text-primaryDark md:ml-4 flex">
+                        <a
+                          className={`
+                          ${
+                            router.pathname == item.link
+                              ? "text-primaryDark border-b-2 border-primaryDark"
+                              : ""
+                          }
+                        hover:text-primaryDark md:ml-4 flex`}
+                        >
                           {item.title}
                           {item.title == "تیکت ها" &&
                             userRespondedTicket?.data?.length > 0 && (
