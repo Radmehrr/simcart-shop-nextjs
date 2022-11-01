@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { FC } from "react";
+import { useAppSelector } from "../hooks/hook";
 import Details from "./details";
 import ItemHeader from "./item-header";
 
-const SimItem: FC<any> = ({ simcart }) => {
+const SimItem: FC<any> = () => {
+  const simcart: any = useAppSelector((state) => state.simcart);
   return (
     <section>
       <div className="max-w-5xl md:mx-auto rounded-lg shadow-2xl bg-white mx-2 bakhMedium">

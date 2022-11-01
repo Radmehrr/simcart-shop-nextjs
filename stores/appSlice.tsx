@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 type stateType = {
   auth: boolean;
   simcarts: [];
+  simcart: {};
   user: {};
   tickets: [];
   messages: [];
@@ -18,6 +19,7 @@ type stateType = {
 const initialState: stateType = {
   auth: false,
   simcarts: [],
+  simcart: {},
   user: {},
   tickets: [],
   messages: [],
@@ -78,6 +80,9 @@ export const appReducer = createSlice({
     },
     addMySimcarts: (state, action) => {
       state.mySimcarts = action.payload;
+    },
+    addSimcart: (state, action) => {
+      state.simcart = action.payload;
     },
   },
 });
