@@ -1,18 +1,12 @@
 import { FC } from "react";
 import numeral from "numeral";
 import Loading from "../loading";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Simcarts: FC<any> = ({ simcarts, loading }) => {
-  const router = useRouter();
   if (loading) {
     return <Loading />;
   }
-
-  const handleOnClick = () => {
-    router.push("/simcart");
-  };
 
   return (
     <section>
