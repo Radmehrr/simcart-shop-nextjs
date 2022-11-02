@@ -9,14 +9,18 @@ const Users: FC<any> = () => {
   const users = useAppSelector((state) => state.users);
   const [limit, setLimit] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [fullName, setFullName] = useState("");
+  const [userFullname, setUserFullName] = useState("");
+  const [userPhone, setUserPhone] = useState("");
 
   useEffect(() => {
     (async () => {
       const res = await instance.get("/admin/users", {
         params: {
-          ...(fullName && {
-            fullName: fullName,
+          ...(userFullname && {
+            fullName: userFullname,
+          }),
+          ...(userPhone && {
+            phone: userPhone,
           }),
           ...(currentPage && {
             page: currentPage,
@@ -26,23 +30,31 @@ const Users: FC<any> = () => {
       });
       dispatch(appActions.addUsers(res.data));
     })();
-  }, [currentPage, fullName]);
+  }, [currentPage, userFullname, userPhone]);
 
   return (
     <section>
       <div className="bg-white max-w-5xl md:mx-auto px-4 py-5 md:px-12 rounded-lg shadow-2xl mx-2 dark:text-gray-900">
         <div className="flex justify-between items-center">
-          <p className="text-lg">کاربران</p>
+          <p className="text-lg w-1/4">کاربران</p>
           <input
             type="text"
             className="bg-gray-50 border border-gray-300 text-gray-900
           text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500
-          focus:outline-none
+          focus:outline-none w-2/3
           p-2.5 dark:bg-gray-700 dark:border-gray-600
           dark:placeholder-gray-400 dark:text-white
           dark:focus:ring-blue-500 dark:focus:border-blue-500 ml-2 md:w-1/3"
-            placeholder="جستچو نام خوانوادگی..."
-            onChange={(e) => setFullName(e.target.value)}
+            placeholder="جستجو نام خوانوادگی یا شماره..."
+            onChange={(e) => {
+              if (e.target.value.match(/^\d/)) {
+                setUserPhone(e.target.value);
+                setUserFullName("");
+              } else {
+                setUserFullName(e.target.value);
+                setUserPhone("");
+              }
+            }}
           />
         </div>
 

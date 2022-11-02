@@ -16,6 +16,7 @@ const Layout = ({ children }: any) => {
       dispatch(appActions.login());
     }
   }, []);
+
   // bg-gradient-to-b from-purple-50 via-purple-150 to-purple-200
   return (
     <div className="bakhMedium flex flex-col justify-between min-h-screen bg-test dark:bg-gradient-to-r dark:from-slate-800 dark:via-slate-800 dark:to-slate-800">
