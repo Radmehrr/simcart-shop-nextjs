@@ -11,8 +11,8 @@ const Simcarts: FC<any> = ({ simcarts, loading }) => {
   return (
     <section>
       <div className="max-w-3xl md:mx-auto">
-        <div className="mx-2">
-          <table className="table-auto min-w-full mt-2">
+        <div className="mx-1 md:mx-0">
+          <table className="table-auto min-w-full mt-2 rounded">
             <thead className="bg-test2 border-b">
               <tr className="text-white">
                 <th
