@@ -23,7 +23,7 @@ module.exports = {
         lightYellow: "rgb(255 243 176)",
         lightGolbehi: "rgb(255 229 217)",
         golbehi: "rgb(255 205 178)",
-        test: "rgb(203 243 240)",
+        test: "#D3D3D3",
         test2: "rgb(108 117 125)",
       },
     },

@@ -1,6 +1,6 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ThemeChanger from "../themeChanger";
-import Image from "next/image";
+const Slide = require("react-reveal/Fade");
 import Link from "next/link";
 import { useRouter } from "next/router";
 import instance, { SWRfetcher } from "../../axios-config";
@@ -13,7 +13,7 @@ export function Navbar() {
   const dispatch = useAppDispatch();
   const login = useAppSelector((state) => state.auth);
 
-  const [openMenu, setOpenMenu] = useState<boolean>(true);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -40,8 +40,11 @@ export function Navbar() {
 
   const userNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
-    { title: "درباره ما", link: "/about-us" },
+    { title: "پروفایل", link: "/profile" },
+    { title: "سفارشات", link: "/my-orders" },
+    { title: "سیمکارت های من", link: "/tickets" },
     { title: "تیکت ها", link: "/tickets" },
+    { title: "درباره ما", link: "/about-us" },
   ];
   const adminNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
@@ -59,105 +62,45 @@ export function Navbar() {
   };
 
   return (
-    <nav className="relative mx-auto px-6 py-3">
-      <div className="flex items-center justify-between">
-        <div>
-          <Link href="/">
-            <a>
-              <Image
-                src="/img/logos/HorizontalSimcartBazarLogo.png"
-                width={60}
-                height={65}
-                alt="image"
-              />
-            </a>
-          </Link>
-        </div>
-        {(() => {
-          if (user.role === "admin" || user.role === "support") {
-            return (
-              <div className="hidden md:flex space-x-8 bakhMedium">
-                {adminNavbarItems.map((item: any) => {
-                  return (
-                    <Fragment key={item.title}>
-                      <Link href={item.link}>
-                        <a
-                          className={`
-                          ${
-                            router.pathname == item.link
-                              ? "text-primaryDark border-b-2 border-primaryDark"
-                              : ""
-                          }
-                        hover:text-primaryDark md:ml-4 flex hover:border-b-2
-                          hover:transition-all hover:animate-bounce hover:border-purple-500
-                        dark:hover:text-white`}
-                        >
-                          {item.title}
-                          {item.title == "تیکت ها" &&
-                            adminPendingTicket?.data?.length > 0 && (
-                              <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
-                            )}
-                        </a>
-                      </Link>
-                    </Fragment>
-                  );
-                })}
+    <nav className="relative mx-auto px-6 py-5 flex justify-between">
+      <div className="w-full md:w-1/4">
+        <button
+          id="menu-btn"
+          type="button"
+          className={`${
+            openMenu && "open"
+          } block hamburger focus:outline-none cursor-pointer `}
+          onClick={() => setOpenMenu(!openMenu)}
+        >
+          <span className="hamburger-top"></span>
+          <span className="hamburger-middle"></span>
+          <span className="hamburger-bottom"></span>
+        </button>
 
-                <div>
-                  <ThemeChanger />
-                </div>
+        {openMenu && (
+          <Slide right>
+            <div className="bg-white text-center dark:text-gray-800 py-5 flex flex-col justify-center">
+              {userNavbarItems.map((item) => (
+                <Link href={`${item.link}`} key={item.title}>
+                  <a
+                    className={`my-2 ${
+                      item.link === router.pathname && "text-red-500"
+                    }`}
+                    onClick={() => setOpenMenu(false)}
+                  >
+                    {item.title}
+                  </a>
+                </Link>
+              ))}
+              <div className="flex justify-center mt-2">
+                <ThemeChanger />
               </div>
-            );
-          } else {
-            return (
-              <div className="hidden md:flex space-x-8 bakhMedium">
-                {userNavbarItems.map((item: any) => {
-                  return (
-                    <Link key={item.title} href={item.link}>
-                      <a
-                        className={`
-                        ${
-                          router.pathname == item.link
-                            ? "text-primaryDark border-b-2 border-primaryDark"
-                            : ""
-                        }
-                        hover:text-primaryDark md:ml-4 hover:border-b-2
-                       hover:transition-all hover:animate-bounce hover:border-purple-500
-                        dark:hover:text-white flex`}
-                      >
-                        {item.title}
-                        {item.title == "تیکت ها" &&
-                          userRespondedTicket?.data?.length > 0 && (
-                            <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
-                          )}
-                      </a>
-                    </Link>
-                  );
-                })}
+            </div>
+          </Slide>
+        )}
+      </div>
 
-                {login && (
-                  <Fragment>
-                    <Link href="/my-simcarts">
-                      <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                        سیمکارت های من
-                      </a>
-                    </Link>
-
-                    <Link href="/my-orders">
-                      <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                        سفارشات
-                      </a>
-                    </Link>
-                  </Fragment>
-                )}
-                <div>
-                  <ThemeChanger />
-                </div>
-              </div>
-            );
-          }
-        })()}
-
+      <div className="flex flex-col">
         {login ? (
           <div className="text-purple-700 font-bold">
             <button
@@ -171,126 +114,36 @@ export function Navbar() {
             </button>
           </div>
         ) : (
-          <div className="flex">
+          <div className="hidden md:flex">
             {router.pathname !== "/login" &&
               router.pathname !== "/signUp" &&
               router.pathname !== "/verify" && (
-                <Link href="/login">
-                  <a
-                    className="p-2 px-6 text-white bg-test2 rounded-lg baseline md:block
+                <>
+                  <Link href="/signUp">
+                    <a
+                      className="px-5 py-2 mx-1 text-white bg-test2 rounded-lg baseline md:block
                     shadow-lg
                   dark:hover:text-white dark:hover:border-purple-400
-                    hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"
-                  >
-                    ورود
-                  </a>
-                </Link>
+                    hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-400"
+                    >
+                      ثبت نام
+                    </a>
+                  </Link>
+
+                  <Link href="/login">
+                    <a
+                      className="p-2 px-6 text-white bg-green-600 rounded-lg baseline md:block
+                    shadow-lg
+                  dark:hover:text-white dark:hover:border-purple-400
+                    hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-400"
+                    >
+                      ورود
+                    </a>
+                  </Link>
+                </>
               )}
           </div>
         )}
-
-        <button
-          id="menu-btn"
-          type="button"
-          className={`${
-            !openMenu && "open"
-          } block hamburger md:hidden focus:outline-none cursor-pointer `}
-          onClick={() => setOpenMenu(!openMenu)}
-        >
-          <span className="hamburger-top"></span>
-          <span className="hamburger-middle"></span>
-          <span className="hamburger-bottom"></span>
-        </button>
-      </div>
-
-      <div className="md:hidden">
-        <div
-          id="menu"
-          className={`z-50 absolute flex flex-col items-center dark:text-black
-          self-end py-8 mt-10 space-y-6 font-bold top-[-400px]
-          transition-all ease-in duration-500 
-        bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md ${
-          !openMenu && "top-[40px]"
-        }`}
-        >
-          {(() => {
-            if (user.role === "admin" || user.role === "support") {
-              return (
-                <>
-                  {adminNavbarItems.map((item: any, index) => {
-                    return (
-                      <Link key={index} href={item.link}>
-                        <a
-                          className={`
-                         ${
-                           router.pathname == item.link
-                             ? "text-primaryDark border-b-2 border-primaryDark"
-                             : ""
-                         }
-                        hover:text-primaryDark md:ml-4 flex`}
-                        >
-                          {item.title}
-                          {item.title == "تیکت ها" &&
-                            adminPendingTicket?.data?.length > 0 && (
-                              <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
-                            )}
-                        </a>
-                      </Link>
-                    );
-                  })}
-                  <div>
-                    <ThemeChanger />
-                  </div>
-                </>
-              );
-            } else {
-              return (
-                <Fragment>
-                  {userNavbarItems.map((item: any, index) => {
-                    return (
-                      <Link key={index} href={item.link}>
-                        <a
-                          className={`
-                          ${
-                            router.pathname == item.link
-                              ? "text-primaryDark border-b-2 border-primaryDark"
-                              : ""
-                          }
-                        hover:text-primaryDark md:ml-4 flex`}
-                        >
-                          {item.title}
-                          {item.title == "تیکت ها" &&
-                            userRespondedTicket?.data?.length > 0 && (
-                              <div className="mr-2 h-2 w-2 bg-blue-400 rounded-md"></div>
-                            )}
-                        </a>
-                      </Link>
-                    );
-                  })}
-
-                  {login && (
-                    <Fragment>
-                      <Link href="/my-simcarts">
-                        <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                          سیمکارت های من
-                        </a>
-                      </Link>
-
-                      <Link href="/my-orders">
-                        <a className="hover:text-primaryDark md:ml-4 hover:border-b-2 hover:transition-all hover:animate-bounce hover:border-purple-500 dark:hover:text-white">
-                          سفارشات
-                        </a>
-                      </Link>
-                    </Fragment>
-                  )}
-                  <div>
-                    <ThemeChanger />
-                  </div>
-                </Fragment>
-              );
-            }
-          })()}
-        </div>
       </div>
     </nav>
   );

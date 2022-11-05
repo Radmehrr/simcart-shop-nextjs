@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Lottie from "react-lottie";
 import instance from "../../axios-config";
 import Filters from "./filters";
 import Pagination from "./pagination";
@@ -6,6 +7,7 @@ import Simcarts from "./simcarts";
 import { RootState } from "../../stores/store";
 import { useAppDispatch, useAppSelector } from "../hooks/hook";
 import { appActions } from "../../stores/appSlice";
+import finger from "./../../public/lottie/finger.json";
 
 const HomeSimcart = () => {
   const dispatch = useAppDispatch();
@@ -75,20 +77,50 @@ const HomeSimcart = () => {
     setLoading(false);
   };
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: finger,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const ArrowLottieStyle = {
+    width: 75,
+    height: 75,
+    backgroundColor: "transparent",
+  };
+
   return (
     <section>
       <div>
-        <Filters
-          setOperator={setOperator}
-          setSimType={setSimType}
-          setStatus={setStatus}
-          setRondType={setRondType}
-          setFromPrice={setFromPrice}
-          setToPrice={setToPrice}
-          setPreCode={setPreCode}
-          setLimit={setLimit}
-          searchButton={searchButton}
-        />
+        <header className="relative flex items-end justify-center h-screen mb-4 overflow-hidden mx-4 rounded-xl">
+          <div className="relative z-10 p-2 text-white bg-purple-50 bg-opacity-50 rounded-xl">
+            <Filters
+              setOperator={setOperator}
+              setSimType={setSimType}
+              setStatus={setStatus}
+              setRondType={setRondType}
+              setFromPrice={setFromPrice}
+              setToPrice={setToPrice}
+              setPreCode={setPreCode}
+              setLimit={setLimit}
+              searchButton={searchButton}
+            />
+          </div>
+          <video
+            loop
+            autoPlay
+            muted
+            className="absolute w-auto min-w-full min-h-full max-w-none"
+          >
+            <source
+              src="/video/pexels-mikhail-nilov-7535106.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </header>
 
         <Simcarts simcarts={simcarts} loading={loading} />
 
@@ -98,6 +130,10 @@ const HomeSimcart = () => {
           dataPerPage={simcarts.length}
           limit={limit}
         />
+
+        <div>
+          <Lottie options={defaultOptions} style={ArrowLottieStyle} />
+        </div>
       </div>
     </section>
   );
