@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import ThemeChanger from "../themeChanger";
-const Slide = require("react-reveal/Fade");
 import Link from "next/link";
+import Lottie from "react-lottie";
 import { useRouter } from "next/router";
 import instance, { SWRfetcher } from "../../axios-config";
 import { useAppDispatch, useAppSelector } from "../hooks/hook";
 import { appActions } from "../../stores/appSlice";
 import Cookies from "js-cookie";
 import useSWR from "swr";
+import fingerprint from "../../public/lottie/fingerprint.json";
+const Slide = require("react-reveal/Fade");
 
 export function Navbar() {
   const dispatch = useAppDispatch();
@@ -61,6 +63,21 @@ export function Navbar() {
     router.reload();
   };
 
+  const fingerOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: fingerprint,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const fingerLottieStyle = {
+    width: 30,
+    height: 30,
+    backgroundColor: "transparent",
+  };
+
+  console.log(user);
   return (
     <nav className="relative mx-auto px-6 py-5 flex justify-between">
       <div className="w-full">
@@ -80,7 +97,36 @@ export function Navbar() {
         {openMenu && (
           <Slide right>
             <div className="bg-white text-center dark:text-gray-800 py-5 flex flex-col justify-center">
-              {userNavbarItems.map((item) => (
+              {(() => {
+                if (user.role == "admin" || user.role == "support") {
+                  return adminNavbarItems.map((item) => (
+                    <Link href={`${item.link}`} key={item.title}>
+                      <a
+                        className={`my-2 ${
+                          item.link === router.pathname && "text-red-500"
+                        }`}
+                        onClick={() => setOpenMenu(false)}
+                      >
+                        {item.title}
+                      </a>
+                    </Link>
+                  ));
+                } else {
+                  return userNavbarItems.map((item) => (
+                    <Link href={`${item.link}`} key={item.title}>
+                      <a
+                        className={`my-2 ${
+                          item.link === router.pathname && "text-red-500"
+                        }`}
+                        onClick={() => setOpenMenu(false)}
+                      >
+                        {item.title}
+                      </a>
+                    </Link>
+                  ));
+                }
+              })()}
+              {/* {userNavbarItems.map((item) => (
                 <Link href={`${item.link}`} key={item.title}>
                   <a
                     className={`my-2 ${
@@ -91,7 +137,7 @@ export function Navbar() {
                     {item.title}
                   </a>
                 </Link>
-              ))}
+              ))} */}
               <div className="flex justify-center mt-2">
                 <ThemeChanger />
               </div>
@@ -122,13 +168,21 @@ export function Navbar() {
                   <>
                     <Link href="/signUp">
                       <a
-                        className="px-4 py-2 md:px-5 mx-1 text-white bg-test2 rounded-lg baseline 
-                          shadow-lg 
+                        className="px-2 py-2 mx-1 text-white bg-test2 rounded-lg baseline 
+                          shadow-lg items-center
                         dark:hover:text-white flex dark:hover:border-purple-400
-                          hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-400"
+                          hover:bg-transparent justify-between hover:text-gray-900 hover:border-2 hover:border-gray-400"
                       >
-                        <p className="px-1">ثبت</p>
-                        <p>نام</p>
+                        <div className="flex ml-1 md:ml-4">
+                          <p className="px-1">ثبت</p>
+                          <p>نام</p>
+                        </div>
+                        <div>
+                          <Lottie
+                            options={fingerOptions}
+                            style={fingerLottieStyle}
+                          />
+                        </div>
                       </a>
                     </Link>
 
