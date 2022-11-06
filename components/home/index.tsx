@@ -6,6 +6,7 @@ import Simcarts from "./simcarts";
 import { RootState } from "../../stores/store";
 import { useAppDispatch, useAppSelector } from "../hooks/hook";
 import { appActions } from "../../stores/appSlice";
+const Zoom = require("react-reveal/Zoom");
 
 const HomeSimcart = () => {
   const dispatch = useAppDispatch();
@@ -78,20 +79,25 @@ const HomeSimcart = () => {
   return (
     <section>
       <div>
-        <header className="relative flex items-end justify-center h-screen mb-4 overflow-hidden mx-4 rounded-xl">
-          <div className="relative z-10 p-2 text-white bg-purple-50 bg-opacity-50 rounded-xl">
-            <Filters
-              setOperator={setOperator}
-              setSimType={setSimType}
-              setStatus={setStatus}
-              setRondType={setRondType}
-              setFromPrice={setFromPrice}
-              setToPrice={setToPrice}
-              setPreCode={setPreCode}
-              setLimit={setLimit}
-              searchButton={searchButton}
-            />
-          </div>
+        <header className="relative flex items-center justify-center h-screen mb-4 overflow-hidden mx-4 rounded-xl">
+          <div className="relative z-10 p-2 text-white bg-purple-50 bg-opacity-50 rounded-xl"></div>
+          <Zoom top cascade>
+            <div
+              className="text-center z-10"
+              style={{ textShadow: "2px 2px 1px white" }}
+            >
+              <p className="mt-2 md:mt-4 mx-1">به</p>
+              <div className="flex justify-center mt-2 text-3xl">
+                <p>سیم</p>
+                <p>کارت</p>
+                <p>بازار</p>
+              </div>
+              <p className="mt-2 md:mt-3 mx-1">
+                دنیای خرید و فروش سیم کارت خوش آمدید
+              </p>
+            </div>
+          </Zoom>
+
           <video
             loop
             autoPlay
@@ -105,7 +111,17 @@ const HomeSimcart = () => {
             Your browser does not support the video tag.
           </video>
         </header>
-
+        <Filters
+          setOperator={setOperator}
+          setSimType={setSimType}
+          setStatus={setStatus}
+          setRondType={setRondType}
+          setFromPrice={setFromPrice}
+          setToPrice={setToPrice}
+          setPreCode={setPreCode}
+          setLimit={setLimit}
+          searchButton={searchButton}
+        />
         <Simcarts simcarts={simcarts} loading={loading} />
 
         <Pagination

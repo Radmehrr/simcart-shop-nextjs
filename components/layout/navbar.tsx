@@ -9,6 +9,13 @@ import { appActions } from "../../stores/appSlice";
 import Cookies from "js-cookie";
 import useSWR from "swr";
 import fingerprint from "../../public/lottie/fingerprint.json";
+import signOut from "../../public/lottie/signOut.json";
+import home from "../../public/lottie/home.json";
+import profile from "../../public/lottie/profile.json";
+import simcart from "../../public/lottie/simcart.json";
+import users from "../../public/lottie/users.json";
+import order from "../../public/lottie/order.json";
+import ticket from "../../public/lottie/ticket.json";
 const Slide = require("react-reveal/Fade");
 
 export function Navbar() {
@@ -44,12 +51,13 @@ export function Navbar() {
     { title: "صفحه اصلی", link: "/" },
     { title: "پروفایل", link: "/profile" },
     { title: "سفارشات", link: "/my-orders" },
-    { title: "سیمکارت های من", link: "/tickets" },
+    { title: "سیمکارت های من", link: "/my-simcarts" },
     { title: "تیکت ها", link: "/tickets" },
     { title: "درباره ما", link: "/about-us" },
   ];
   const adminNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
+    { title: "پروفایل", link: "/profile" },
     { title: "سیمکارت", link: "/admin/simcarts" },
     { title: "کاربران", link: "/admin/users" },
     { title: "سفارشات", link: "/admin/orders" },
@@ -71,16 +79,102 @@ export function Navbar() {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const signOutOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: signOut,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const ticketOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: ticket,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const usersOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: users,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const orderOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: order,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const profileOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: profile,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const simcartOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: simcart,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const homeOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: home,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   const fingerLottieStyle = {
     width: 30,
     height: 30,
     backgroundColor: "transparent",
   };
+  const usersLottieStyle = {
+    width: 40,
+    height: 40,
+    marginRight: -25,
+    marginTop: -10,
+    marginLeft: 5,
+    backgroundColor: "transparent",
+  };
+  const simcartLottieStyle = {
+    width: 30,
+    height: 30,
+    marginTop: -30,
+    marginRight: -15,
+    marginLeft: 5,
+    backgroundColor: "transparent",
+  };
+  const profileLottieStyle = {
+    width: 80,
+    height: 80,
+    marginRight: -45,
+    marginTop: -30,
+    marginLeft: 0,
+    backgroundColor: "transparent",
+  };
+  const ticketLottieStyle = {
+    width: 55,
+    height: 55,
+    marginRight: -30,
+    marginTop: -20,
+    backgroundColor: "transparent",
+  };
 
-  console.log(user);
   return (
     <nav className="relative mx-auto px-6 py-5 flex justify-between">
-      <div className="w-full">
+      <div className="w-full mt-3 mr-3">
         <button
           id="menu-btn"
           type="button"
@@ -104,10 +198,66 @@ export function Navbar() {
                       <a
                         className={`my-2 ${
                           item.link === router.pathname && "text-red-500"
-                        }`}
+                        } flex justify-center
+                       
+                        `}
                         onClick={() => setOpenMenu(false)}
                       >
-                        {item.title}
+                        {item.link == "/" && (
+                          <div>
+                            <Lottie
+                              options={homeOptions}
+                              style={fingerLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/profile" && (
+                          <div>
+                            <Lottie
+                              options={profileOptions}
+                              style={profileLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/admin/simcarts" && (
+                          <div>
+                            <Lottie
+                              options={simcartOptions}
+                              style={simcartLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/admin/orders" && (
+                          <div>
+                            <Lottie
+                              options={orderOptions}
+                              style={usersLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/admin/users" && (
+                          <div>
+                            <Lottie
+                              options={usersOptions}
+                              style={usersLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/admin/tickets" && (
+                          <div>
+                            <Lottie
+                              options={ticketOptions}
+                              style={ticketLottieStyle}
+                            />
+                          </div>
+                        )}
+                        <p
+                          className={`${
+                            item.link == "/profile" && "-mr-[20px]"
+                          } ${item.link == "/admin/simcarts" && "-mt-[20px]"}`}
+                        >
+                          {item.title}
+                        </p>
                       </a>
                     </Link>
                   ));
@@ -126,18 +276,6 @@ export function Navbar() {
                   ));
                 }
               })()}
-              {/* {userNavbarItems.map((item) => (
-                <Link href={`${item.link}`} key={item.title}>
-                  <a
-                    className={`my-2 ${
-                      item.link === router.pathname && "text-red-500"
-                    }`}
-                    onClick={() => setOpenMenu(false)}
-                  >
-                    {item.title}
-                  </a>
-                </Link>
-              ))} */}
               <div className="flex justify-center mt-2">
                 <ThemeChanger />
               </div>
@@ -146,62 +284,65 @@ export function Navbar() {
         )}
       </div>
 
-      {!openMenu && (
-        <div className="flex flex-col">
-          {login ? (
-            <div className="text-purple-700 font-bold">
-              <button
-                className="p-2 px-6 text-white bg-test2 rounded-lg baseline md:block
-                          shadow-lg
+      <div>
+        {!openMenu && (
+          <div className="flex flex-col">
+            {login ? (
+              <div className="text-purple-700 font-bold">
+                <button
+                  className="p-2 px-2 flex text-white bg-test2 rounded-lg baseline
+                          shadow-lg justify-between
                         dark:hover:text-white dark:hover:border-purple-400
                           hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"
-                onClick={exit}
-              >
-                خروج
-              </button>
-            </div>
-          ) : (
-            <div className="flex w-full">
-              {router.pathname !== "/login" &&
-                router.pathname !== "/signUp" &&
-                router.pathname !== "/verify" && (
-                  <>
-                    <Link href="/signUp">
-                      <a
-                        className="px-2 py-2 mx-1 text-white bg-test2 rounded-lg baseline 
+                  onClick={exit}
+                >
+                  <p className="mx-2 mt-1">خروج</p>
+                  <Lottie options={signOutOptions} style={fingerLottieStyle} />
+                </button>
+              </div>
+            ) : (
+              <div className="flex w-full">
+                {router.pathname !== "/login" &&
+                  router.pathname !== "/signUp" &&
+                  router.pathname !== "/verify" && (
+                    <>
+                      <Link href="/signUp">
+                        <a
+                          className="px-2 py-2 mx-1 text-white bg-test2 rounded-lg baseline 
                           shadow-lg items-center
                         dark:hover:text-white flex dark:hover:border-purple-400
                           hover:bg-transparent justify-between hover:text-gray-900 hover:border-2 hover:border-gray-400"
-                      >
-                        <div className="flex ml-1 md:ml-4">
-                          <p className="px-1">ثبت</p>
-                          <p>نام</p>
-                        </div>
-                        <div>
-                          <Lottie
-                            options={fingerOptions}
-                            style={fingerLottieStyle}
-                          />
-                        </div>
-                      </a>
-                    </Link>
+                        >
+                          <div className="flex ml-1 md:ml-4">
+                            <p className="px-1">ثبت</p>
+                            <p>نام</p>
+                          </div>
+                          <div>
+                            <Lottie
+                              options={fingerOptions}
+                              style={fingerLottieStyle}
+                            />
+                          </div>
+                        </a>
+                      </Link>
 
-                    <Link href="/login">
-                      <a
-                        className="px-6 md:p-2 md:px-6 py-2 text-white bg-green-600 rounded-lg baseline
+                      <Link href="/login">
+                        <a
+                          className="px-6 md:p-2 md:px-6 py-2 text-white bg-green-600 rounded-lg baseline
                           shadow-lg
                         dark:hover:text-white dark:hover:border-purple-400
                           hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-400"
-                      >
-                        ورود
-                      </a>
-                    </Link>
-                  </>
-                )}
-            </div>
-          )}
-        </div>
-      )}
+                        >
+                          ورود
+                        </a>
+                      </Link>
+                    </>
+                  )}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </nav>
   );
 }
