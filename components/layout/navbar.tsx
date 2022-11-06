@@ -63,7 +63,7 @@ export function Navbar() {
 
   return (
     <nav className="relative mx-auto px-6 py-5 flex justify-between">
-      <div className="w-full md:w-1/4">
+      <div className="w-full">
         <button
           id="menu-btn"
           type="button"
@@ -100,51 +100,54 @@ export function Navbar() {
         )}
       </div>
 
-      <div className="flex flex-col">
-        {login ? (
-          <div className="text-purple-700 font-bold">
-            <button
-              className="p-2 px-6 text-white bg-test2 rounded-lg baseline md:block
-                    shadow-lg
-                  dark:hover:text-white dark:hover:border-purple-400
-                    hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"
-              onClick={exit}
-            >
-              خروج
-            </button>
-          </div>
-        ) : (
-          <div className="hidden md:flex">
-            {router.pathname !== "/login" &&
-              router.pathname !== "/signUp" &&
-              router.pathname !== "/verify" && (
-                <>
-                  <Link href="/signUp">
-                    <a
-                      className="px-5 py-2 mx-1 text-white bg-test2 rounded-lg baseline md:block
-                    shadow-lg
-                  dark:hover:text-white dark:hover:border-purple-400
-                    hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-400"
-                    >
-                      ثبت نام
-                    </a>
-                  </Link>
+      {!openMenu && (
+        <div className="flex flex-col">
+          {login ? (
+            <div className="text-purple-700 font-bold">
+              <button
+                className="p-2 px-6 text-white bg-test2 rounded-lg baseline md:block
+                          shadow-lg
+                        dark:hover:text-white dark:hover:border-purple-400
+                          hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"
+                onClick={exit}
+              >
+                خروج
+              </button>
+            </div>
+          ) : (
+            <div className="flex w-full">
+              {router.pathname !== "/login" &&
+                router.pathname !== "/signUp" &&
+                router.pathname !== "/verify" && (
+                  <>
+                    <Link href="/signUp">
+                      <a
+                        className="px-4 py-2 md:px-5 mx-1 text-white bg-test2 rounded-lg baseline 
+                          shadow-lg 
+                        dark:hover:text-white flex dark:hover:border-purple-400
+                          hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-400"
+                      >
+                        <p className="px-1">ثبت</p>
+                        <p>نام</p>
+                      </a>
+                    </Link>
 
-                  <Link href="/login">
-                    <a
-                      className="p-2 px-6 text-white bg-green-600 rounded-lg baseline md:block
-                    shadow-lg
-                  dark:hover:text-white dark:hover:border-purple-400
-                    hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-400"
-                    >
-                      ورود
-                    </a>
-                  </Link>
-                </>
-              )}
-          </div>
-        )}
-      </div>
+                    <Link href="/login">
+                      <a
+                        className="px-6 md:p-2 md:px-6 py-2 text-white bg-green-600 rounded-lg baseline
+                          shadow-lg
+                        dark:hover:text-white dark:hover:border-purple-400
+                          hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-400"
+                      >
+                        ورود
+                      </a>
+                    </Link>
+                  </>
+                )}
+            </div>
+          )}
+        </div>
+      )}
     </nav>
   );
 }
