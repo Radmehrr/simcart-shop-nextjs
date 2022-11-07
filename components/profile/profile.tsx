@@ -1,10 +1,10 @@
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import instance from "../../axios-config";
 import { IranProvince } from "../../constants/province";
-import { appActions } from "../../stores/appSlice";
 import { useAppDispatch, useAppSelector } from "../hooks/hook";
 import Modal from "../modal";
 
@@ -17,19 +17,20 @@ const Profile = () => {
   const [newCity, setNewCity] = useState("");
   const [newTextAddress, setNewTextAddress] = useState("");
   const user: any = useAppSelector((state) => state.user);
-  console.log(user);
 
+  const router = useRouter();
   const handleNewFullName = async () => {
     if (newFullName) {
       try {
         const res = await instance.patch("/user", {
           fullName: newFullName,
         });
-        dispatch(appActions.updateUserName(newFullName));
+
         setFullNameVisible(false);
         toast.success("با موفقیت ثبت شد.", {
           position: toast.POSITION.TOP_RIGHT,
         });
+        router.reload();
       } catch (error) {
         toast.error("خطا در داده ورودی", {
           position: toast.POSITION.TOP_RIGHT,
@@ -66,7 +67,7 @@ const Profile = () => {
 
         <div className="flex items-center">
           <div className="mx-5 my-4">
-            <Image src="/img/person.png" width={80} height={80} />
+            <Image src="/img/person.png" width={80} height={80} alt="person" />
           </div>
 
           <div className="mx-4">

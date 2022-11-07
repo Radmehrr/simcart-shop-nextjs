@@ -84,9 +84,6 @@ export const appReducer = createSlice({
     addSimcart: (state, action) => {
       state.simcart = action.payload;
     },
-    updateUserName: (state, action) => {
-      state.user.fullName = action.payload;
-    },
   },
 });
 
