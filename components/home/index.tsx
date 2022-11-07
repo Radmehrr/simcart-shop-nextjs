@@ -86,13 +86,13 @@ const HomeSimcart = () => {
               className="text-center z-10"
               style={{ textShadow: "2px 2px 1px white" }}
             >
-              <p className="mt-2 md:mt-4 mx-1">به</p>
-              <div className="flex justify-center mt-2 text-3xl">
+              <p className="mt-2 md:mt-4 mx-1 text-4xl md:text-5xl">به</p>
+              <div className="flex justify-center mt-2 text-6xl md:text-9xl font-bold">
                 <p>سیم</p>
                 <p>کارت</p>
                 <p>بازار</p>
               </div>
-              <p className="mt-2 md:mt-3 mx-1">
+              <p className="mt-2 md:mt-3 mx-1 text-3xl md:text-5xl">
                 دنیای خرید و فروش سیم کارت خوش آمدید
               </p>
             </div>

@@ -32,13 +32,6 @@ const Footer = () => {
     <footer>
       <div className="rounded-lg bg-purple-50 mt-2 mr-3 shadow-2xl ml-2">
         <div className="flex flex-col md:flex-row justify-between	text-center">
-          <div className="mt-3">
-            <Image
-              src="/img/logos/simkartbazarlogo.png"
-              width="200"
-              height="200"
-            />
-          </div>
           <div className="w-full md:w-80 mb-4">
             <ul>
               <li className="text-purple-900 font-bold mb-2 pt-2">

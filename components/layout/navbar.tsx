@@ -16,6 +16,7 @@ import simcart from "../../public/lottie/simcart.json";
 import users from "../../public/lottie/users.json";
 import order from "../../public/lottie/order.json";
 import ticket from "../../public/lottie/ticket.json";
+import about from "../../public/lottie/about.json";
 const Slide = require("react-reveal/Fade");
 
 export function Navbar() {
@@ -50,8 +51,9 @@ export function Navbar() {
   const userNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
     { title: "پروفایل", link: "/profile" },
-    { title: "سفارشات", link: "/my-orders" },
     { title: "سیمکارت های من", link: "/my-simcarts" },
+    { title: "سفارشات", link: "/my-orders" },
+
     { title: "تیکت ها", link: "/tickets" },
     { title: "درباره ما", link: "/about-us" },
   ];
@@ -91,6 +93,14 @@ export function Navbar() {
     loop: true,
     autoplay: true,
     animationData: ticket,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const aboutOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: about,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -169,6 +179,20 @@ export function Navbar() {
     height: 55,
     marginRight: -30,
     marginTop: -20,
+    backgroundColor: "transparent",
+  };
+  const mySimcartsStyle = {
+    width: 25,
+    height: 25,
+    marginRight: 35,
+    marginTop: -20,
+    backgroundColor: "transparent",
+  };
+  const aboutLottieStyle = {
+    width: 25,
+    height: 25,
+    marginRight: -20,
+    marginTop: -10,
     backgroundColor: "transparent",
   };
 
@@ -267,10 +291,69 @@ export function Navbar() {
                       <a
                         className={`my-2 ${
                           item.link === router.pathname && "text-red-500"
-                        }`}
+                        } flex justify-center hover:text-green-400`}
                         onClick={() => setOpenMenu(false)}
                       >
-                        {item.title}
+                        {item.link == "/" && (
+                          <div>
+                            <Lottie
+                              options={homeOptions}
+                              style={fingerLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/profile" && (
+                          <div>
+                            <Lottie
+                              options={profileOptions}
+                              style={profileLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/my-orders" && (
+                          <div>
+                            <Lottie
+                              options={orderOptions}
+                              style={usersLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/my-simcarts" && (
+                          <div>
+                            <Lottie
+                              options={simcartOptions}
+                              style={mySimcartsStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/tickets" && (
+                          <div>
+                            <Lottie
+                              options={ticketOptions}
+                              style={ticketLottieStyle}
+                            />
+                          </div>
+                        )}
+                        {item.link == "/about-us" && (
+                          <div>
+                            <Lottie
+                              options={aboutOptions}
+                              style={aboutLottieStyle}
+                            />
+                          </div>
+                        )}
+                        <p
+                          className={`${
+                            item.link == "/profile" && "-mr-[20px]"
+                          } ${
+                            item.link == "/my-simcarts" &&
+                            "-mt-[20px] mr-[10px]"
+                          } ${
+                            item.link == "/about-us" && "-mt-[10px] mr-[10px]"
+                          }`}
+                        >
+                          {item.title}
+                        </p>
                       </a>
                     </Link>
                   ));
@@ -293,7 +376,7 @@ export function Navbar() {
                   className="p-2 px-2 flex text-white bg-test2 rounded-lg baseline
                           shadow-lg justify-between
                         dark:hover:text-white dark:hover:border-purple-400
-                          hover:bg-transparent hover:text-purple-600 hover:border-2 hover:border-purple-600"
+                          hover:bg-transparent hover:text-gray-600 hover:border-2 hover:border-gray-600"
                   onClick={exit}
                 >
                   <p className="mx-2 mt-1">خروج</p>
