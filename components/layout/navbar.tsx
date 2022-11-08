@@ -207,9 +207,9 @@ export function Navbar() {
           } block hamburger focus:outline-none cursor-pointer `}
           onClick={() => setOpenMenu(!openMenu)}
         >
-          <span className="hamburger-top"></span>
-          <span className="hamburger-middle"></span>
-          <span className="hamburger-bottom"></span>
+          <span className="hamburger-top dark:bg-white"></span>
+          <span className="hamburger-middle dark:bg-white"></span>
+          <span className="hamburger-bottom dark:bg-white"></span>
         </button>
 
         {openMenu && (

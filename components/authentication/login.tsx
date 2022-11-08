@@ -56,7 +56,7 @@ const Login = () => {
       <main className="bg-white max-w-lg mx-auto p-8 md:p-12 rounded-lg shadow-2xl">
         <section className="text-center md:-mt-6">
           <Image
-            src="/img/logos/SimcartBazarOnlyElementLogo.png"
+            src="/img/logos/logoIconSimKart.png"
             width={40}
             height={45}
             alt="image"
