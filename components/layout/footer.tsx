@@ -37,6 +37,7 @@ const Footer = () => {
               src="/img/logos/simkartbazarLogoNewVert.png"
               width={150}
               height={100}
+              alt="logo"
             />
           </div>
           <div className="w-full md:w-80 mb-4">
