@@ -32,9 +32,16 @@ const Footer = () => {
     <footer>
       <div className="rounded-lg bg-purple-50 mt-2 mr-3 shadow-2xl ml-2">
         <div className="flex flex-col md:flex-row justify-between	text-center">
+          <div className="py-4 px-4">
+            <Image
+              src="/img/logos/simkartbazarLogoNewVert.png"
+              width={150}
+              height={100}
+            />
+          </div>
           <div className="w-full md:w-80 mb-4">
             <ul>
-              <li className="text-purple-900 font-bold mb-2 pt-2">
+              <li className="text-purple-900 font-bold mb-2 pt-2 text-xl">
                 سیمکارت بازار
               </li>
               <div className="flex justify-center">

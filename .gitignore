@@ -37,7 +37,6 @@ next-env.d.ts
 
 .env.local
 .env
-.env.production
 
 # PWA files
 **/public/sw.js

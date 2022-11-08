@@ -5,6 +5,8 @@ class MyDocument extends Document {
     return (
       <Html lang="fa">
         <Head>
+          <link rel="shortcut icon" href="/img/logos/logoIconSimKart.png" />
+
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png"></link>
           <meta name="theme-color" content="#fff" />
