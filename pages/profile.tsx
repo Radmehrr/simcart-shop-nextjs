@@ -10,4 +10,20 @@ const ProfilePage: NextPage = () => {
   );
 };
 
+export async function getServerSideProps(context: any) {
+  const accessToken = context.req.cookies["accessToken"];
+  if (!accessToken) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
+
 export default ProfilePage;
