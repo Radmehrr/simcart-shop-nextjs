@@ -22,6 +22,9 @@ const Pagination: FC<any> = ({
         <ArrowLeft />
         قبلی
       </button>
+      <div className="p-2">
+        <p>{currentPage}</p>
+      </div>
       <button
         className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-500
         bg-white rounded-lg border border-gray-300 hover:bg-gray-100

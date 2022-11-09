@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "PWA simcart-bazar",
+  "name": "simcart-bazar",
   "description": "cool app",
-  "short_name": "simcart-bazar app",
+  "short_name": "simcart-bazar",
   "icons": [
     {
       "src": "/icon-192x192.png",
