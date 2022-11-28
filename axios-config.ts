@@ -2,7 +2,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const instance = axios.create({
-  // baseURL: "https://simcart.iran.liara.run",
   baseURL: process.env.NEXT_PUBLIC_SIMCARTBAZAR_URL,
 });
 

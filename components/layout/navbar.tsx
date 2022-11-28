@@ -38,15 +38,16 @@ export function Navbar() {
 
   const user: any = useAppSelector((state) => state.user);
 
-  const { data: adminPendingTicket, error: adminTicketError } = useSWR<any>(
-    user.role == "admin" ? "/admin/ticket?status=در حال بررسی" : null,
-    SWRfetcher
-  );
+  // const { data: adminPendingTicket, error: adminTicketError } = useSWR<any>(
+  //   user.role == "admin" ? "/admin/ticket?status=در حال بررسی" : null,
+  //   SWRfetcher
+  // );
 
-  const { data: userRespondedTicket, error: userTicketError } = useSWR<any>(
-    user.role == "client" ? "/user/ticket?status=پاسخ داده" : null,
-    SWRfetcher
-  );
+  // const { data: userRespondedTicket, error: userTicketError } = useSWR<any>(
+  //   user.role == "client" ? "/user/ticket?status=پاسخ داده" : null,
+  //   SWRfetcher
+  // );
+  // console.log(adminPendingTicket);
 
   const userNavbarItems = [
     { title: "صفحه اصلی", link: "/" },
@@ -268,7 +269,7 @@ export function Navbar() {
                           </div>
                         )}
                         {item.link == "/admin/tickets" && (
-                          <div>
+                          <div className="flex">
                             <Lottie
                               options={ticketOptions}
                               style={ticketLottieStyle}

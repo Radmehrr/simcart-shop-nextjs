@@ -1,5 +1,5 @@
 {
-  "app": "nextjs-simcart-bazar",
+  "app": "simcart-frontend",
   "port": 3000,
   "next": {
     "modifyConfig": false
